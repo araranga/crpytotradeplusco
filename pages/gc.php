@@ -26,7 +26,7 @@ function pin()
 						$error .= "<i class=\"fa fa-warning\"></i>Password incorrect!.<br>";
 		}
 		
-		if($check_row['rate_start']>$row['balance_pesos'])
+		if($check_row['rate_start']>$row[$_POST['balancetype']])
 		{
 			$error .= "<i class=\"fa fa-warning\"></i>Insufficient Funds!.<br>";
 		}
@@ -57,20 +57,10 @@ function pin()
 		$code_package = $_POST['rate'];
 		$code_referrer = $accounts_id;
 		mysql_query_cheat("INSERT INTO tbl_code SET code_value='$code_value',code_package='$code_package',code_pin='$code_pin',code_referrer='$code_referrer',activated='1'");
-		mysql_query_cheat("UPDATE tbl_accounts SET balance_pesos='$current_balance' WHERE accounts_id='$accounts_id'");
+
+		mysql_query_cheat("UPDATE tbl_accounts SET {$_POST['balancetype']} = {$_POST['balancetype']} -  {$check_row['rate_start']} WHERE accounts_id='$accounts_id'");
 		
 		//rebates
-
-
-
-
-
-
-
-
-
-
-
 		//history
 		$package_id = $check_row['rate_id'];
 		$package_summary = $check_row['rate_name']. " - ".$check_row['rate_start'];
@@ -122,14 +112,25 @@ $own = array();
 
 $own['yes'] = "Use in my account funding.";
 $own['no'] = "Provide codes and able to send to others.";
+
+
+$own2 = array();
+
+$own2['balance_pesos'] = "USD Balance.";
+$own2['balance_wallet'] = "E-wallet";
 	
 $field[] = array("type"=>"select","value"=>"rate","label"=>"Choose Your Package","option"=>$arr);
 $field[] = array("type"=>"select","value"=>"datatype","label"=>"Choose your purpose","option"=>$own);
+$field[] = array("type"=>"select","value"=>"balancetype","label"=>"Which account to deduct","option"=>$own2);
 $field[] = array("type"=>"text","value"=>"amount","label"=>"Enter Amount");
 $field[] = array("type"=>"password","value"=>"password","label"=>"Enter Password");
 //
 ?>
-<h2>Buy Courses - Balance Dollars(<?php echo $row['balance_pesos'];?>)</h2>
+<h2>Buy Courses</h2>
+<div class='coursebox' style='background-color:green;font-weight:700;'>
+<p>Balance USD: <?php echo $row['balance_pesos'];?></p>
+<p>Balance E-Wallet: <?php echo $row['balance_wallet'];?></p>
+</div>
 <style>
 .coursebox{
 	padding: 20px;
