@@ -4,9 +4,25 @@ $accounts_id = $_SESSION['accounts_id'];
 $q = mysql_query_cheat("SELECT * FROM tbl_accounts WHERE accounts_id='$accounts_id'");
 $row = mysqli_fetch_array_cheat($q);
 
+
+$json_string = 'https://blockchain.info/ticker';
+$jsondata = file_get_contents($json_string);
+$obj = json_decode($jsondata,true);
+if(!empty($obj['USD']['buy'])){
+	$newest = $obj['USD']['buy'] + ($obj['USD']['buy'] * 0.05);
+
+	mysql_query_cheat('UPDATE tbl_cmsmanager SET cmsmanager_content = '.$newest.' WHERE id = 41');
+}
+
 $query2 = "SELECT * FROM tbl_cmsmanager WHERE id='41'";
 $q2 = mysql_query_cheat($query2);
 $row2 = mysqli_fetch_array_cheat($q2);
+
+
+
+
+
+
 
 
 	function trans()
