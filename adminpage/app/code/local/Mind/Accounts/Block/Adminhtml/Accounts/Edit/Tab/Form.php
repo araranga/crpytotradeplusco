@@ -149,7 +149,7 @@ $fieldset->addField('date_created', 'date',array(
     'name' => 'balance', 
     ));
     $fieldset->addField('balance_pesos', 'text', array( 
-    'label' => Mage::helper('accounts')->__('Balance PESOS'), 
+    'label' => Mage::helper('accounts')->__('Balance USD'), 
     'class' => 'required-entry', 
     'name' => 'balance_pesos', 
     ));

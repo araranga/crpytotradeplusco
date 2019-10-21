@@ -41,11 +41,6 @@ class Mind_Accounts_Block_Adminhtml_Accounts_Grid extends Mage_Adminhtml_Block_W
           'align'     =>'left',
           'index'     => 'lastname',
       ));
-      $this->addColumn('code_id', array(
-          'header'    => Mage::helper('accounts')->__('Code ID'),
-          'align'     =>'left',
-          'index'     => 'code_id',
-      ));
       $this->addColumn('balance', array(
           'header'    => Mage::helper('accounts')->__('Balance BTC'),
           'align'     =>'left',
@@ -53,7 +48,7 @@ class Mind_Accounts_Block_Adminhtml_Accounts_Grid extends Mage_Adminhtml_Block_W
       ));
 
       $this->addColumn('balance_pesos', array(
-          'header'    => Mage::helper('accounts')->__('Balance PESOS'),
+          'header'    => Mage::helper('accounts')->__('Balance USD'),
           'align'     =>'left',
           'index'     => 'balance_pesos',
       ));
