@@ -83,9 +83,10 @@ function pin()
 
 		$maturity_amount = (($check_row_main['maturity'] / 100) * $check_row['rate_start']) + $check_row['rate_start'];
 
+$buycodeaccounts_id = 0;
 
-
-if($row['refer']){
+if($row['refer'] && $_POST['datatype']=='yes'){
+	$buycodeaccounts_id = $accounts_id;
 	$refersummary = "5% From {$check_row['rate_start']} - {$row['username']}";
 
 $q2 = mysql_query_cheat("SELECT * FROM tbl_accounts WHERE username='{$row['refer']}'");
@@ -97,10 +98,10 @@ mysql_query_cheat("UPDATE tbl_accounts SET balance_pesos= balance_pesos + $rebat
 
 
 
+mysql_query_cheat("INSERT INTO tbl_buycode_history SET package_id='$package_id',package_summary='$package_summary',accounts_id='$buycodeaccounts_id',position='$accounts_id',code_pin='$code_pin',code_value='$code_value',rebates='$rebates',maturity_date='$new_date',amount='{$check_row['rate_start']}',maturity_amount='$maturity_amount'");
 
 
 
-		mysql_query_cheat("INSERT INTO tbl_buycode_history SET package_id='$package_id',package_summary='$package_summary',accounts_id='$accounts_id',code_pin='$code_pin',code_value='$code_value',rebates='$rebates',maturity_date='$new_date',amount='{$check_row['rate_start']}',maturity_amount='$maturity_amount'");
 		$q = mysql_query_cheat("SELECT * FROM tbl_accounts WHERE accounts_id='$accounts_id'");
 		$row = mysqli_fetch_array_cheat($q);	
 		$success = "Here is the reference: $code_value-$code_pin";
@@ -116,8 +117,14 @@ while($row_package = mysqli_fetch_array_cheat($package_query))
 {
 	$arr[$row_package['rate_id']] = $row_package['rate_name']; 
 }
+
+$own = array();
+
+$own['yes'] = "Use in my account funding.";
+$own['no'] = "Provide codes and able to send to others.";
 	
 $field[] = array("type"=>"select","value"=>"rate","label"=>"Choose Your Package","option"=>$arr);
+$field[] = array("type"=>"select","value"=>"datatype","label"=>"Choose your purpose","option"=>$own);
 $field[] = array("type"=>"text","value"=>"amount","label"=>"Enter Amount");
 $field[] = array("type"=>"password","value"=>"password","label"=>"Enter Password");
 //
@@ -235,3 +242,52 @@ if($success!='')
 <br/>
 <center><input class='btn btn-primary btn-lg' type='submit' name='submit' value='Process'></center>
 </form>
+
+
+<hr>
+<?php
+$qnotuse = mysql_query_cheat("SELECT * FROM tbl_buycode_history WHERE position='{$_SESSION['accounts_id']}' AND accounts_id = 0");
+$counternotsure = mysqli_num_rows($qnotuse);
+
+if(!empty($counternotsure)){
+	?>
+	<h3>Available Codes</h3>
+	<?php
+
+
+	?>
+	<table class="table table-striped table-bordered table-hover">
+    <thead>
+        <tr>
+		   <th>Codes</th>
+           <th>Amount</th>
+           <th>Other Data</th>
+        </tr>
+    </thead>
+    <tbody>
+<?php
+while($rowqnotuse = mysqli_fetch_array_cheat($qnotuse)){
+	$check_rate = mysql_query_cheat("SELECT * FROM tbl_rate WHERE rate_id='".$rowqnotuse['package_id']."'");
+	$check_row  = mysqli_fetch_array_cheat($check_rate);
+
+
+	?>
+        <tr>
+		   <td><?php echo $rowqnotuse['code_value']; ?>-<?php echo $rowqnotuse['code_pin']; ?></td>
+           <td><?php echo $rowqnotuse['amount']; ?></td>
+           <td>
+           	Package Name: <?php echo $check_row['rate_name']; ?><br>
+           	Maturity Rate: <?php echo $check_row['maturity']; ?>%<br>
+           	Maturity Days: <?php echo $check_row['days']; ?><br>
+           	
+           </td>
+        </tr>
+	<?php
+}
+?>
+
+    </tbody>
+</table>
+	<?php
+}
+?>

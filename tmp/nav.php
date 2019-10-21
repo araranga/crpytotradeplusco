@@ -62,7 +62,11 @@
 							</li>  
 							<li>
 								<a href="index.php?page=rebate" ><i class="fa fa-columns"></i>Referrals</a>
-							</li>  	
+							</li>  
+							<li>
+								<a href="index.php?page=codeactivate" ><i class="fa fa-keyboard-o"></i>Code Activate</a>
+							</li>  
+
 
 
 						</ul>
