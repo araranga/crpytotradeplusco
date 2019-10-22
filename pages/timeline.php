@@ -32,7 +32,7 @@ $row4 = mysqli_fetch_array_cheat(mysql_query_cheat("SELECT SUM(amount) as sum FR
 						Available Balance (Dollar)
 					</div>
 					<div class="panel-body">
-						<p><?php echo number_format($row['balance_pesos'],2); ?></p>
+						<p>$<?php echo number_format($row['balance_pesos'],2); ?></p>
 					</div>
 				</div>
 			</div>	
@@ -43,7 +43,7 @@ $row4 = mysqli_fetch_array_cheat(mysql_query_cheat("SELECT SUM(amount) as sum FR
 						Available Balance (E-Wallet)
 					</div>
 					<div class="panel-body">
-						<p><?php echo number_format($row['balance_wallet'],2); ?></p>
+						<p>$<?php echo number_format($row['balance_wallet'],2); ?></p>
 					</div>
 				</div>
 			</div>	
@@ -56,7 +56,7 @@ $row4 = mysqli_fetch_array_cheat(mysql_query_cheat("SELECT SUM(amount) as sum FR
 						Total Withdrawals
 					</div>
 					<div class="panel-body">
-						<p><?php echo number_format($row3['sum'],7); ?></p>
+						<p>$<?php echo number_format($row3['sum'],2); ?></p>
 					</div>
 				</div>
 			</div>	
@@ -67,7 +67,7 @@ $row4 = mysqli_fetch_array_cheat(mysql_query_cheat("SELECT SUM(amount) as sum FR
 						Total Direct Referrals
 					</div>
 					<div class="panel-body">
-						<p><?php echo number_format($row4['sum'],7); ?></p>
+						<p>$<?php echo number_format($row4['sum'],2); ?></p>
 					</div>
 				</div>
 			</div>	

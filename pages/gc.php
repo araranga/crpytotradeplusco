@@ -128,8 +128,8 @@ $field[] = array("type"=>"password","value"=>"password","label"=>"Enter Password
 ?>
 <h2>Buy Courses</h2>
 <div class='coursebox' style='background-color:green;font-weight:700;'>
-<p>Balance USD: <?php echo $row['balance_pesos'];?></p>
-<p>Balance E-Wallet: <?php echo $row['balance_wallet'];?></p>
+<p>Balance USD: $<?php echo number_format($row['balance_pesos'],2);?></p>
+<p>Balance E-Wallet: $<?php echo number_format($row['balance_wallet'],2);?></p>
 </div>
 <style>
 .coursebox{
@@ -146,7 +146,7 @@ $field[] = array("type"=>"password","value"=>"password","label"=>"Enter Password
 	{
 		?>
 	<span style='font-weight:700;'><?php echo $row_packagex['rate_name']; ?>
-		- Minimum is $<?php echo $row_packagex['rate_start']; ?> and Maximum off $<?php echo $row_packagex['rate_end']; ?> with maturity rate of <?php echo $row_packagex['maturity']; ?>% after <?php echo $row_packagex['days']; ?> business days.
+		- Minimum is $<?php echo number_format($row_packagex['rate_start'],2); ?> and Maximum off $<?php echo number_format($row_packagex['rate_end'],2); ?> with maturity rate of <?php echo $row_packagex['maturity']; ?>% after <?php echo $row_packagex['days']; ?> business days.
 	</span><br/>
 		<?php
 	}
@@ -275,7 +275,7 @@ while($rowqnotuse = mysqli_fetch_array_cheat($qnotuse)){
 	?>
         <tr>
 		   <td><?php echo $rowqnotuse['code_value']; ?>-<?php echo $rowqnotuse['code_pin']; ?></td>
-           <td><?php echo $rowqnotuse['amount']; ?></td>
+           <td>$<?php echo number_format($rowqnotuse['amount'],2); ?></td>
            <td>
            	Package Name: <?php echo $check_row['rate_name']; ?><br>
            	Maturity Rate: <?php echo $check_row['maturity']; ?>%<br>

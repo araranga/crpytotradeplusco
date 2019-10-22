@@ -80,7 +80,7 @@ $row = mysqli_fetch_array_cheat($q);
 
 <div class='coursebox' style='background-color:green;font-weight:700;'>
 <p>Conversion:<br> 
-	1 BTC = <?php echo round($row2['cmsmanager_content'],2); ?> USD
+	1 BTC = $<?php echo round($row2['cmsmanager_content'],2); ?> USD
 </p>
 </div>
 <style>
@@ -93,7 +93,7 @@ $row = mysqli_fetch_array_cheat($q);
 </style>
 
 <p>BTC Balance: (<?php echo $row['balance'];?>)</p>
-<p>Dollar Balance: (<?php echo $row['balance_pesos'];?>)</p>
+<p>Dollar Balance: (<?php echo "$".number_format($row['balance_pesos'],2);?>)</p>
 <?php
 if($error!='')
 {
