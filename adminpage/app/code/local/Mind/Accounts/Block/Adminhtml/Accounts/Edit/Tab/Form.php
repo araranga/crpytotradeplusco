@@ -153,7 +153,11 @@ $fieldset->addField('date_created', 'date',array(
     'class' => 'required-entry', 
     'name' => 'balance_pesos', 
     ));
-
+    $fieldset->addField('balance_wallet', 'text', array( 
+    'label' => Mage::helper('accounts')->__('Balance E-wallet'), 
+    'class' => 'required-entry', 
+    'name' => 'balance_wallet', 
+    ));
 
      
       if ( Mage::getSingleton('adminhtml/session')->getAccountsData() )

@@ -52,9 +52,16 @@ ini_set("error_log", "php-error.log");
                         <span class="icon-bar"></span>
                     </button>   
 				<a class="navbar-brand" href='index.php?page=home' style='color:#214761;'>
-					<img src='logo.png' class='aimtoberich' style='height:80px;'>Aim2berich
+					<img src='logo2.png' class='aimtoberich' style='height:100px;'>
 				</a>					
                 </div>
+<?php if(!empty($_SESSION['username'])) {  ?>
+<div style="color: black;padding: 47px 50px 5px 50px;float: right;font-size: 16px;"> Hi, <?php echo $_SESSION['firstname']; ?> <?php echo $_SESSION['lastname']; ?> &nbsp;
+</div>
+<?php } ?>
+
+
+
             </div>
 			
 			

@@ -168,7 +168,7 @@ if(isset($_SESSION['loggedin'])){
         if(!empty($_SESSION['security_1email'])){
           $securelog = 1;
       ?>
-      <p class="login-box-msg">Please put correct code sent it email.</p>
+      <p class="login-box-msg">Please put correct code sent to your email.</p>
       <div class="form-group has-feedback">
         <input name="security_1email" type="text" class="form-control" placeholder="Email Code" required>
       </div>

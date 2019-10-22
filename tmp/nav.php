@@ -75,7 +75,26 @@
 					</li>					
 	
                     <li>
-                        <a href="index.php?page=convert" ><i class="fa fa-bank"></i>Convert</a>
+                        <a href="#" ><i class="fa fa-bank"></i>Convert</a>
+                        <ul>
+
+					<li>
+						<a href="index.php?page=convert" ><i class="fa fa-send"></i>BTC to USD</a>
+					</li>
+
+					<li>
+						<a href="index.php?page=convertpesos" ><i class="fa fa-send"></i>USD to BTC</a>
+					</li>	
+					<li>
+						<a href="index.php?page=convertwallet" ><i class="fa fa-send"></i>USD to E-wallet</a>
+					</li>	
+					<li>
+						<a href="index.php?page=fundtransfer" ><i class="fa fa-send"></i>Fund Transfer</a>
+					</li>	
+
+
+
+                        </ul>
                     </li>
 
 

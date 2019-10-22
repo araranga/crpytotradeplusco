@@ -53,7 +53,11 @@ class Mind_Accounts_Block_Adminhtml_Accounts_Grid extends Mage_Adminhtml_Block_W
           'index'     => 'balance_pesos',
       ));
 
-
+      $this->addColumn('balance_wallet', array(
+          'header'    => Mage::helper('accounts')->__('Balance E-wallet'),
+          'align'     =>'left',
+          'index'     => 'balance_wallet',
+      ));
 
 
 
