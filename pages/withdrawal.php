@@ -134,7 +134,7 @@ $payment['btc'] = $fields;
       <tbody>
 
          <tr>
-            <td style="width:180px;" class="key" valign="top"><label for="accounts_name">Widrawal Type</label></td>
+            <td style="width:180px;" class="key" valign="top"><label for="accounts_name">Withdrawal Type</label></td>
             <td>
 				<select id='claimtypeid' name='claimtype' onchange="widraw(this.value)" required>
 						<!-- <option value='bank'>Bank Deposit</option> -->

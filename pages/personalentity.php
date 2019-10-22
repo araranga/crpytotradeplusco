@@ -48,11 +48,11 @@ $monthly = "amount,maturity_date,maturity_amount";
 }
 </style>
 
-<h2>Funding Accounts</h2>
+<h2>My Products</h2>
 <table class="table table-striped table-bordered table-hover">
     <thead>
         <tr>
-			     <th>Fund Data</th>
+			     <th>My Product Database</th>
            <th>Other Status</th>
         </tr>
     </thead>
