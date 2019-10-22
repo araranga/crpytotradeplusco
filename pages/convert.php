@@ -76,6 +76,22 @@ $row = mysqli_fetch_array_cheat($q);
 ?>
 <h2>Convert BTC to Dollars</h2>   
 
+
+
+<div class='coursebox' style='background-color:green;font-weight:700;'>
+<p>Conversion:<br> 
+	1 BTC = <?php echo round($row2['cmsmanager_content'],2); ?> USD
+</p>
+</div>
+<style>
+.coursebox{
+	padding: 20px;
+    background-color: #2196F3;
+    color: white;
+    margin-bottom: 15px;
+}
+</style>
+
 <p>BTC Balance: (<?php echo $row['balance'];?>)</p>
 <p>Dollar Balance: (<?php echo $row['balance_pesos'];?>)</p>
 <?php

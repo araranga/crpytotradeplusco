@@ -22,10 +22,10 @@
 						$qrate= mysql_query_cheat("SELECT rate_name,rate_id FROM `tbl_rate` WHERE rate_start <= $sums");
 					?>
                     <li>
-                        <a href="index.php?page=home" ><i class="fa fa-desktop"></i>News & Announcement</a>
+                        <a href="index.php?page=home" ><i class="fa fa-desktop"></i>Announcement</a>
                     </li>	
                     <li>
-                        <a href="#" ><i class="fa fa-book"></i>Tutorials</a>
+                        <a href="#" ><i class="fa fa-book"></i>Trading Courses</a>
                         <ul>
                         	<?php
                         		while($rowx = mysqli_fetch_array_cheat($qrate)){
@@ -99,28 +99,23 @@
 
 
 					<li>
-						<a href="index.php?page=personalentity" ><i class="fa fa-database"></i>Funding Accounts</a>
+						<a href="index.php?page=personalentity" ><i class="fa fa-database"></i>My Products</a>
 					</li>
 <!-- 					<li>
 						<a href="index.php?page=reentry" ><i class="fa fa-pencil-square-o"></i>Add Entry</a>
 					</li>   
 				 -->
 					<li>
-						<a href="index.php?page=gc" ><i class="fa fa-qrcode"></i>Margin Funding</a>
+						<a href="index.php?page=gc" ><i class="fa fa-qrcode"></i>Purchase Products</a>
 					</li>					
 					<li>
-						<a href="#" ><i class="fa fa-send"></i>Deposit</a>
-						<ul>
-							<li>
-								<a href="index.php?page=btcwallet" ><i class="fa fa-send"></i>BTC Wallet</a>
-							</li>  
-						</ul>
+						<a href="index.php?page=btcwallet" ><i class="fa fa-send"></i>Deposit</a>
 					</li>	
 					<li>
 						<a href="index.php?page=withdrawal" ><i class="fa fa-money"></i>Withdrawal</a>
 					</li>
 					<li>
-						<a href="index.php?page=transaction" ><i class="fa fa-bank"></i>Transaction</a>
+						<a href="index.php?page=transaction" ><i class="fa fa-bank"></i>Verify My Deposit</a>
 					</li>					
 					<li>
 						<a href="index.php?page=signout" ><i class="fa fa-sign-out"></i>Logout</a>

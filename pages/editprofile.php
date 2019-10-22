@@ -52,7 +52,7 @@ $field[] = array("type"=>"text","value"=>"username","attr"=>"disabled");
 
 #$field[] = array("type"=>"password","value"=>"password","attr"=>"disabled");
 
-$field[] = array("type"=>"email","value"=>"email");
+$field[] = array("type"=>"email","value"=>"email","attr"=>"disabled");
 
 $field[] = array("type"=>"text","value"=>"firstname");
 
@@ -132,7 +132,12 @@ if($success!='')
 
 
 
-
+<style>
+button[disabled], html input[disabled] {
+    cursor: default;
+    background: #d8d2d2;
+}
+</style>
 
 
 
