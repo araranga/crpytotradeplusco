@@ -14,7 +14,11 @@
 
 					$row = mysqli_fetch_array_cheat($q);
 
-					 $sums  = $row['sums'];		
+					 $sums  = $row['sums'];	
+
+					 if(empty($sums)){
+					 	$sums = 0;
+					 }	
 
 					//SELECT rate_name,rate_id FROM `tbl_rate` WHERE rate_start <= 2499					
 							
@@ -111,12 +115,16 @@
 					<li>
 						<a href="index.php?page=btcwallet" ><i class="fa fa-send"></i>Deposit</a>
 					</li>	
+
+					<li>
+						<a href="index.php?page=transaction" ><i class="fa fa-bank"></i>Verify My Deposit</a>
+					</li>	
+
+
 					<li>
 						<a href="index.php?page=withdrawal" ><i class="fa fa-money"></i>Withdrawal</a>
 					</li>
-					<li>
-						<a href="index.php?page=transaction" ><i class="fa fa-bank"></i>Verify My Deposit</a>
-					</li>					
+				
 					<li>
 						<a href="index.php?page=signout" ><i class="fa fa-sign-out"></i>Logout</a>
 					</li>

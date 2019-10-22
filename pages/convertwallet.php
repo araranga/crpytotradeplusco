@@ -66,8 +66,8 @@ $row = mysqli_fetch_array_cheat($q);
 
 <p>Please note that any transfer amount to E-wallet is cannot send back to Dollars. E-wallet is used only for repurchasing.</p>   
 
-<p>E-wallet Balance: (<?php echo $row['balance_wallet'];?>)</p>
-<p>Dollars Balance: (<?php echo $row['balance_pesos'];?>)</p>
+<p>E-wallet Balance: (<?php echo "$".number_format($row['balance_wallet'],2);?>)</p>
+<p>Dollars Balance: (<?php echo "$".number_format($row['balance_pesos'],2);?>)</p>
 <?php
 if($error!='')
 {

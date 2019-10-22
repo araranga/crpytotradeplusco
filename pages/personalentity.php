@@ -79,14 +79,23 @@ $monthly = "amount,maturity_date,maturity_amount";
                  $textdata = $monthly;
               }
 
+
+              $row['maturity_amount'] = "$".number_format($row['maturity_amount'],2);
+              $row['amount'] = "$".number_format($row['amount'],2);
+
+
               foreach(explode(",",$textdata) as $text){
 
                   if(empty($row[$text])){
                     $row[$text] = "N/A";
                   }
 
+
+
+
                   echo str_replace("_"," ",ucwords($text))." :{$row[$text]}<br>";
               }
+
 
 
               $date = date("M j, Y H:i:s",strtotime($row['maturity_date']));
@@ -119,7 +128,7 @@ var x<?php echo $row['id']; ?> = setInterval(function() {
   // If the count down is over, write some text 
   if (distance<?php echo $row['id']; ?> < 0) {
     clearInterval(x<?php echo $row['id']; ?>);
-    document.getElementById("demo<?php echo $row['id']; ?>").innerHTML = "MATURED";
+    document.getElementById("demo<?php echo $row['id']; ?>").innerHTML = "Please wait for the system we are generating your payout.";
   }
 }, 1000);
 </script>
