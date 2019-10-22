@@ -88,6 +88,9 @@
 					<li>
 						<a href="index.php?page=convertwallet" ><i class="fa fa-send"></i>USD to E-wallet</a>
 					</li>	
+					<li>
+						<a href="index.php?page=fundtransfer" ><i class="fa fa-send"></i>Fund Transfer</a>
+					</li>	
 
 
 

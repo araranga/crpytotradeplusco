@@ -35,7 +35,20 @@ $row4 = mysqli_fetch_array_cheat(mysql_query_cheat("SELECT SUM(amount) as sum FR
 						<p><?php echo number_format($row['balance_pesos'],2); ?></p>
 					</div>
 				</div>
-			</div>		
+			</div>	
+
+			<div class="col-lg-12 col-md-12">
+				<div class="panel panel-primary">
+					<div class="panel-heading">
+						Available Balance (E-Wallet)
+					</div>
+					<div class="panel-body">
+						<p><?php echo number_format($row['balance_wallet'],2); ?></p>
+					</div>
+				</div>
+			</div>	
+
+
 
 			<div class="col-lg-12 col-md-12">
 				<div class="panel panel-primary">
