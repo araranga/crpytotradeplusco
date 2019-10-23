@@ -91,9 +91,20 @@ $monthly = "amount,maturity_date,maturity_amount";
                   }
 
 
+                  $label = $text;
 
 
-                  echo str_replace("_"," ",ucwords($text))." :{$row[$text]}<br>";
+
+
+
+
+                  if($text=='maturity_date'){
+                    $label = "Date to receive bonus";
+                  }
+                  if($text=='maturity_amount'){
+                    $label = "Bonus Amount";
+                  }
+                  echo str_replace("_"," ",ucwords($label))." :{$row[$text]}<br>";
               }
 
 

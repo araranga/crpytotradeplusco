@@ -146,7 +146,7 @@ $field[] = array("type"=>"password","value"=>"password","label"=>"Enter Password
 	{
 		?>
 	<span style='font-weight:700;'><?php echo $row_packagex['rate_name']; ?>
-		- Minimum is $<?php echo number_format($row_packagex['rate_start'],2); ?> and Maximum off $<?php echo number_format($row_packagex['rate_end'],2); ?> with maturity rate of <?php echo $row_packagex['maturity']; ?>% after <?php echo $row_packagex['days']; ?> business days.
+		- Minimum is $<?php echo number_format($row_packagex['rate_start'],2); ?> and a maximum of $<?php echo number_format($row_packagex['rate_end'],2); ?> with bonus a rate <?php echo $row_packagex['maturity']; ?>% after <?php echo $row_packagex['days']; ?> business days.
 	</span><br/>
 		<?php
 	}
@@ -241,7 +241,39 @@ if($success!='')
 						?>
 </table>
 <br/>
-<center><input class='btn btn-primary btn-lg' type='submit' name='submit' value='Process'></center>
+<style>
+#agreement {
+    width: 60%;
+    text-align: left;
+    border: 1px solid grey;
+    padding: 4px;
+	display:none;
+}
+#registerbutton{
+	display:none;
+}
+</style>
+<center>
+<table>
+<tr>
+<td><input id='terms' name='termscondition' type='checkbox'onclick="checkterms()" style='margin-top: 11px;'></td>
+<td>I agree to the terms and conditions. <a href='javascript:void(0)' onclick="jQuery('#agreement').slideToggle();">View here</a></td></tr>
+</table>
+</center>
+<center>
+<?php
+$queryx = "SELECT * FROM tbl_cmsmanager WHERE id='39'";
+$qx = mysql_query_cheat($queryx);
+$rowx = mysqli_fetch_array_cheat($qx);
+?>
+
+	<div id='agreement'>
+		<?php echo $rowx['cmsmanager_content']; ?>test
+	</div>
+</center>
+
+<br>
+<center><input id='registerbutton' class='btn btn-primary btn-lg' type='submit' name='submit' value='Process'></center>
 </form>
 
 
@@ -277,9 +309,9 @@ while($rowqnotuse = mysqli_fetch_array_cheat($qnotuse)){
 		   <td><?php echo $rowqnotuse['code_value']; ?>-<?php echo $rowqnotuse['code_pin']; ?></td>
            <td>$<?php echo number_format($rowqnotuse['amount'],2); ?></td>
            <td>
-           	Package Name: <?php echo $check_row['rate_name']; ?><br>
-           	Maturity Rate: <?php echo $check_row['maturity']; ?>%<br>
-           	Maturity Days: <?php echo $check_row['days']; ?><br>
+           	Trading Course: <?php echo $check_row['rate_name']; ?><br>
+           	Bonus Rate: <?php echo $check_row['maturity']; ?>%<br>
+           	Business Days: <?php echo $check_row['days']; ?><br>
            	
            </td>
         </tr>
