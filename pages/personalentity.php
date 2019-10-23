@@ -100,43 +100,12 @@ $monthly = "amount,maturity_date,maturity_amount";
 
               $date = date("M j, Y H:i:s",strtotime($row['maturity_date']));
 
-              if(empty($row['status'])){
-          ?>
-<script>
-// Set the date we're counting down to
-var countDownDate<?php echo $row['id']; ?> = new Date("<?php echo $date; ?>").getTime();
+if(empty($row['status'])){
 
-// Update the count down every 1 second
-var x<?php echo $row['id']; ?> = setInterval(function() {
-
-  // Get today's date and time
-  var now<?php echo $row['id']; ?> = new Date().getTime();
-    
-  // Find the distance between now and the count down date
-  var distance<?php echo $row['id']; ?> = countDownDate<?php echo $row['id']; ?> - now<?php echo $row['id']; ?>;
-    
-  // Time calculations for days, hours, minutes and seconds
-  var days<?php echo $row['id']; ?> = Math.floor(distance<?php echo $row['id']; ?> / (1000 * 60 * 60 * 24));
-  var hours<?php echo $row['id']; ?> = Math.floor((distance<?php echo $row['id']; ?> % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-  var minutes<?php echo $row['id']; ?> = Math.floor((distance<?php echo $row['id']; ?> % (1000 * 60 * 60)) / (1000 * 60));
-  var seconds<?php echo $row['id']; ?> = Math.floor((distance<?php echo $row['id']; ?> % (1000 * 60)) / 1000);
-    
-  // Output the result in an element with id="demo"
-  document.getElementById("demo<?php echo $row['id']; ?>").innerHTML = days<?php echo $row['id']; ?> + "d " + hours<?php echo $row['id']; ?> + "h "
-  + minutes<?php echo $row['id']; ?> + "m " + seconds<?php echo $row['id']; ?> + "s ";
-    
-  // If the count down is over, write some text 
-  if (distance<?php echo $row['id']; ?> < 0) {
-    clearInterval(x<?php echo $row['id']; ?>);
-    document.getElementById("demo<?php echo $row['id']; ?>").innerHTML = "Please wait for the system we are generating your payout.";
+  $startDate = date('Y-m-d');
+  if($row['maturity_date']==$startDate){
+   echo "Status: Please wait for the system to compute your payout.";
   }
-}, 1000);
-</script>
-<hr>
-Countdown to maturity:<p id="demo<?php echo $row['id']; ?>" class="timers">Loading...</p>
-
-<?php
-
 }
 else{
   echo "Status: Completed";
