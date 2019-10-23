@@ -74,9 +74,12 @@ function pin()
 		$maturity_amount = (($check_row_main['maturity'] / 100) * $check_row['rate_start']) + $check_row['rate_start'];
 
 $buycodeaccounts_id = 0;
+$position = $_SESSION['accounts_id'];
 
-if($row['refer'] && $_POST['datatype']=='yes'){
-	$buycodeaccounts_id = $accounts_id;
+if($row['refer'] && $_POST['datatype']=='yes')
+{
+	$position  = 0;
+	$buycodeaccounts_id = $_SESSION['accounts_id'];
 	$refersummary = "5% From {$check_row['rate_start']} - {$row['username']}";
 
 $q2 = mysql_query_cheat("SELECT * FROM tbl_accounts WHERE username='{$row['refer']}'");
@@ -88,7 +91,7 @@ mysql_query_cheat("UPDATE tbl_accounts SET balance_pesos= balance_pesos + $rebat
 
 
 
-mysql_query_cheat("INSERT INTO tbl_buycode_history SET package_id='$package_id',package_summary='$package_summary',accounts_id='$buycodeaccounts_id',position='$accounts_id',code_pin='$code_pin',code_value='$code_value',rebates='$rebates',maturity_date='$new_date',amount='{$check_row['rate_start']}',maturity_amount='$maturity_amount'");
+mysql_query_cheat("INSERT INTO tbl_buycode_history SET package_id='$package_id',package_summary='$package_summary',accounts_id='$buycodeaccounts_id',position='$position',code_pin='$code_pin',code_value='$code_value',rebates='$rebates',maturity_date='$new_date',amount='{$check_row['rate_start']}',maturity_amount='$maturity_amount'");
 
 
 
