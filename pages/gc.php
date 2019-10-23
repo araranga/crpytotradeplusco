@@ -110,8 +110,8 @@ while($row_package = mysqli_fetch_array_cheat($package_query))
 
 $own = array();
 
-$own['yes'] = "Use in my account funding.";
-$own['no'] = "Provide codes and able to send to others.";
+$own['yes'] = "Purchase Product For Myself";
+$own['no'] = "Purchase Activation Codes";
 
 
 $own2 = array();
