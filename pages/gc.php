@@ -73,14 +73,25 @@ function pin()
 
 		$maturity_amount = (($check_row_main['maturity'] / 100) * $check_row['rate_start']) + $check_row['rate_start'];
 
+
+		
+
 $buycodeaccounts_id = 0;
 $position = $_SESSION['accounts_id'];
 
-if($row['refer'] && $_POST['datatype']=='yes')
-{
+
+
+if($_POST['datatype']=='yes'){
+
+
 	$position  = 0;
 	$buycodeaccounts_id = $_SESSION['accounts_id'];
-	$refersummary = "5% From {$check_row['rate_start']} - {$row['username']}";
+
+}
+
+if(!empty($row['refer']))
+{
+$refersummary = "5% From {$check_row['rate_start']} - {$row['username']}";
 
 $q2 = mysql_query_cheat("SELECT * FROM tbl_accounts WHERE username='{$row['refer']}'");
 $row2 = mysqli_fetch_array_cheat($q2);
@@ -88,6 +99,7 @@ mysql_query_cheat("INSERT INTO tbl_bonus SET amount='$rebates',accounts_id='{$ro
 mysql_query_cheat("UPDATE tbl_accounts SET balance_pesos= balance_pesos + $rebates WHERE accounts_id='{$row2['accounts_id']}'");
 
 }
+
 
 
 
