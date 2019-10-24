@@ -283,7 +283,7 @@ $rowx = mysqli_fetch_array_cheat($qx);
 ?>
 
 	<div id='agreement'>
-		<?php echo $rowx['cmsmanager_content']; ?>test
+		<?php echo $rowx['cmsmanager_content']; ?>
 	</div>
 </center>
 
