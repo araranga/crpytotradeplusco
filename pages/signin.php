@@ -256,7 +256,7 @@ if(isset($_SESSION['loggedin'])){
         if(empty($_SESSION['username'])){
       ?>
     <a href="index.php?page=forgotpass">I forgot my password</a><br>
-    <a href="index.php?page=signin" class="text-center">Register a new membership</a>
+    <a href="index.php?page=register" class="text-center">Register a new membership</a>
     <?php
     }
   ?>
