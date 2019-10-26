@@ -167,7 +167,7 @@ $field[] = array("type"=>"text","value"=>"lastname");
 //$field[] = array("type"=>"text","value"=>"mobile","label"=>"Contact Number");
 
 
-$field[] = array("type"=>"text","value"=>"refer");
+$field[] = array("type"=>"text","value"=>"refer","label"=>"Referred by","placeholder"=>"Please enter the username of your referrer");
 ?>
 
 
@@ -227,11 +227,11 @@ $field[] = array("type"=>"text","value"=>"refer");
 
                     <tr>
 
-                      <td class="key" valign="top" ><label for="accounts_name"><?php echo $label; ?><?php echo $req_fld?>:</label></td>
+                      <td width="20%" class="key" valign="top" ><label for="accounts_name"><?php echo $label; ?><?php echo $req_fld?>:</label></td>
 
                       <?php if ( $is_editable_field ) { ?>
 
-                      <td>
+                      <td width="60%">
 
                       <?php
 
@@ -283,7 +283,7 @@ $field[] = array("type"=>"text","value"=>"refer");
 
                         ?>
 
-                        <input <?php if($inputs['value']!='refer') { echo 'required'; }?> <?php echo $inputs['attr']; ?> type="<?php echo $inputs['type']; ?>" name="<?php echo $inputs['value']; ?>" id="<?php echo $inputs['value']; ?>" maxlength="255" value="<?php echo $_POST[$inputs['value']]; ?>" />
+                        <input <?php if($inputs['value']!='refer') { echo 'required'; }?> <?php echo $inputs['attr']; ?> type="<?php echo $inputs['type']; ?>" name="<?php echo $inputs['value']; ?>" id="<?php echo $inputs['value']; ?>" placeholder="<?php echo $inputs['placeholder']; ?>" maxlength="255" value="<?php echo $_POST[$inputs['value']]; ?>" />
 
                         <span class="validation-status"></span>                       
 
@@ -382,6 +382,10 @@ $rowx = mysqli_fetch_array_cheat($qx);
 }
 #registerbutton{
 	display:none;
+}
+
+input[type=text],input[type=password],input[type=email], select {
+  width:60%;
 }
 </style>
 <br/><br/>
