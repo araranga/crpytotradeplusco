@@ -21,7 +21,7 @@ $row4 = mysqli_fetch_array_cheat(mysql_query_cheat("SELECT SUM(amount) as sum FR
 						Available Balance (BTC)
 					</div>
 					<div class="panel-body">
-						<p><?php echo number_format($row['balance'],7); ?></p>
+						<p>₿<?php echo number_format($row['balance'],7); ?></p>
 					</div>
 				</div>
 			</div>	
@@ -56,7 +56,7 @@ $row4 = mysqli_fetch_array_cheat(mysql_query_cheat("SELECT SUM(amount) as sum FR
 						Total Withdrawals
 					</div>
 					<div class="panel-body">
-						<p>$<?php echo number_format($row3['sum'],2); ?></p>
+						<p>₿<?php echo number_format($row3['sum'],7); ?>
 					</div>
 				</div>
 			</div>	
