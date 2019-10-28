@@ -58,7 +58,7 @@ function trans()
 ?>
 <h2>Withdrawal Request</h2>   
 
-<p>BTC Balance: (<?php echo $row['balance'];?>)</p>
+<p>BTC Balance: (₿<?php echo $row['balance'];?>)</p>
 <?php
 if($error!='')
 {
@@ -148,7 +148,7 @@ $payment['btc'] = $fields;
    <table id='defaultfield' width="100%" style='display:none;'>
       <tbody>					 
         <tr class='antibug'>
-            <td style="width:180px;" class="key" valign="top"><label for="accounts_name">Amount to withraw:</label></td>
+            <td style="width:180px;" class="key" valign="top"><label for="accounts_name">Amount to withdraw:</label></td>
             <td>
                <input style="width: 302px;" required="" type="float" name="withdraw" id="withdraw" size="40" maxlength="255" value="">
                <span class="validation-status"></span>												

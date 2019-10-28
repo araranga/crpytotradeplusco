@@ -92,7 +92,7 @@ $row = mysqli_fetch_array_cheat($q);
 }
 </style>
 
-<p>BTC Balance: (<?php echo $row['balance'];?>)</p>
+<p>BTC Balance: (₿<?php echo $row['balance'];?>)</p>
 <p>Dollar Balance: (<?php echo "$".number_format($row['balance_pesos'],2);?>)</p>
 <?php
 if($error!='')
