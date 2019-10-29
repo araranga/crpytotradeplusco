@@ -178,7 +178,7 @@ if(!empty($_GET['refer'])){
 
   $refer_data = explode("-",$_GET['refer']);
   $accounts_id_refer = $refer_data[0];
-  $qrefer = mysql_query_cheat("SELECT username FROM tbl_accounts WHERE accounts_id='$accounts_id_refer'");
+  $qrefer = mysql_query_cheat("SELECT username FROM tbl_accounts WHERE username='$accounts_id_refer'");
   $rowqrefer = mysqli_fetch_array_cheat($qrefer);
 
 

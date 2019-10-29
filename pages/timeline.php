@@ -26,7 +26,7 @@ if($row[''])
 					</div>
 					<div class="panel-body">
 						<?php
-							$actual_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]/index.php?page=register&refer=".$_SESSION['accounts_id']."-".md5($_SESSION['username']);
+							$actual_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]/index.php?page=register&refer=".$_SESSION['username'];
 						?>	
 						<p><?php echo $actual_link; ?></p>
 					</div>
