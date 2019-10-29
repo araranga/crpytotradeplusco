@@ -12,9 +12,29 @@ $row3 = mysqli_fetch_array_cheat(mysql_query_cheat("SELECT SUM(amount) as sum FR
 $row4 = mysqli_fetch_array_cheat(mysql_query_cheat("SELECT SUM(amount) as sum FROM tbl_bonus WHERE accounts_id='$accounts_id'"));
 
 
+if($row[''])
+
+
 ?>
 <h1>Your Timeline</h1>
 <div class="row">
+
+			<div class="col-lg-12 col-md-12">
+				<div class="panel panel-primary">
+					<div class="panel-heading">
+						Your Referral Link
+					</div>
+					<div class="panel-body">
+						<?php
+							$actual_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]/index.php?page=register&refer=".$_SESSION['accounts_id']."-".md5($_SESSION['username']);
+						?>	
+						<p><?php echo $actual_link; ?></p>
+					</div>
+				</div>
+			</div>	
+
+
+
 			<div class="col-lg-12 col-md-12">
 				<div class="panel panel-primary">
 					<div class="panel-heading">

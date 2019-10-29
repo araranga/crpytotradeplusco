@@ -90,6 +90,10 @@ if(countfield("username",$_POST['refer'])==0)
 	$error .= "Referral username is not existing please enter valid one!.<br/>";
 
 }
+}else{
+
+ $error .= "Referral username is required please enter a valid one.<br/>";
+
 }
 
   if(empty($_POST['g-recaptcha-response'])){
@@ -167,8 +171,26 @@ $field[] = array("type"=>"text","value"=>"lastname");
 //$field[] = array("type"=>"text","value"=>"mobile","label"=>"Contact Number");
 
 
-$field[] = array("type"=>"text","value"=>"refer","label"=>"Referred by","placeholder"=>"Please enter the username of your referrer");
+$field['refer'] = array("type"=>"text","value"=>"refer","label"=>"Referred by","placeholder"=>"Please enter the username of your referrer");
+
+
+if(!empty($_GET['refer'])){
+
+  $refer_data = explode("-",$_GET['refer']);
+  $accounts_id_refer = $refer_data[0];
+  $qrefer = mysql_query_cheat("SELECT username FROM tbl_accounts WHERE accounts_id='$accounts_id_refer'");
+  $rowqrefer = mysqli_fetch_array_cheat($qrefer);
+
+
+  if(!empty($rowqrefer['username'])){
+     $field['refer']['readonly'] = 1;
+     $_POST['refer'] = $rowqrefer['username'];
+  }
+
+
+}
 ?>
+
 
 
 <div class="panel panel-default">
@@ -283,7 +305,7 @@ $field[] = array("type"=>"text","value"=>"refer","label"=>"Referred by","placeho
 
                         ?>
 
-                        <input <?php if($inputs['value']!='refer') { echo 'required'; }?> <?php echo $inputs['attr']; ?> type="<?php echo $inputs['type']; ?>" name="<?php echo $inputs['value']; ?>" id="<?php echo $inputs['value']; ?>" placeholder="<?php echo $inputs['placeholder']; ?>" maxlength="255" value="<?php echo $_POST[$inputs['value']]; ?>" />
+                        <input <?php if($inputs['readonly']=='1') { echo 'readonly'; }?> <?php if($inputs['value']!='refers') { echo 'required'; }?> <?php echo $inputs['attr']; ?> type="<?php echo $inputs['type']; ?>" name="<?php echo $inputs['value']; ?>" id="<?php echo $inputs['value']; ?>" placeholder="<?php echo $inputs['placeholder']; ?>" maxlength="255" value="<?php echo $_POST[$inputs['value']]; ?>" />
 
                         <span class="validation-status"></span>                       
 
