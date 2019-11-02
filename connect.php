@@ -1,7 +1,7 @@
 <?php
 error_reporting(E_ERROR | E_WARNING | E_PARSE);
 function mysql_query_cheat($query){
-$con=mysqli_connect("localhost","root","","ending");
+$con=mysqli_connect("localhost","root","","crypto");
 
 $data = mysqli_query($con,$query);
 

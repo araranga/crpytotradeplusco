@@ -45,6 +45,34 @@
     $(document).ready(function () {
         mainApp.main_fun();
 
+        $('.myaccount span').click(function() {
+            $(this).toggleClass('active')
+        })
+
+        var winHeight = $(window).height();
+        $('#wrapper').css('min-height', winHeight);
+
+        $(window).resize(function() {
+            setTimeout(doneResizing, 500);
+        });
+
+        function doneResizing(){
+            var winWidth = $(window).width();
+            var winHeight = $(window).height();
+
+            $('#wrapper').css('min-height', winHeight);
+            
+        }
+
+        $('#main-menu > li').each(function() {
+            if ( $(this).children('ul').length > 0 ) {
+                $(this).addClass('has-submenu');
+            }  
+        })
+
+        $('#main-menu > li').click(function() {
+            $(this).addClass('active').siblings('li').removeClass('active');
+        })
         
         
     });

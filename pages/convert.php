@@ -74,7 +74,10 @@ $row = mysqli_fetch_array_cheat($q);
 
 
 ?>
-<h2>Convert BTC to Dollars</h2>   
+<div class="npage-header">
+	<h2>Convert BTC to Dollars</h2>   
+	<p>Phasellus tincidunt est vel luctus elementum. Pellentesque pellentesque arcu nunc, eu porta mauris ultricies eu.</p>
+</div>
 
 
 

@@ -89,13 +89,6 @@ foreach($field as $f)
 }
 
 
-
-?>
-
-<h2>Edit Profile</h2>   
-
-<?php
-
 if($error!='')
 
 {
@@ -141,134 +134,81 @@ button[disabled], html input[disabled] {
 
 
 
-<form method='POST' action=''>
+<form method='POST' action='' class="form-container editprofile">
+	<div class="npage-header">
+		<h2>Edit Profile</h2>
+		<p>Phasellus tincidunt est vel luctus elementum. Pellentesque pellentesque arcu nunc, eu porta mauris ultricies eu.</p>
+	</div>
+	<div class="col-grp">
+		<?php
 
-<table width="100%">
+			$is_editable_field = 1;
 
-						<?php
+				foreach($field as $inputs) {
+					if($$inputs['value']!='' && $inputs['value']=='code_id') {
+						$label = "Package / Account Type";
+					} else {
+						$label = ucwords($inputs['value']);
+					}
 
-						$is_editable_field = 1;
+		?>
 
-						foreach($field as $inputs)
+					<!-- <div class="row"> -->
+						<!-- <td style="width:180px;" class="key" valign="top" >
+							<label for="accounts_name"><?php echo $label; ?><?php echo $req_fld?>:</label>
+						</td> -->
 
-						{
+		<?php 
 
-												if($$inputs['value']!='' && $inputs['value']=='code_id')
+					if ( $is_editable_field ) { 
 
-												{
-
-												$label = "Package / Account Type";
-
-												}
-
-												else
-
-												{
-
-												$label = ucwords($inputs['value']);
-
-												}
-
-						?>
-
-									
-
-										<tr>
-
-											<td style="width:180px;" class="key" valign="top" ><label for="accounts_name"><?php echo $label; ?><?php echo $req_fld?>:</label></td>
-
-											<?php if ( $is_editable_field ) { ?>
-
-											<td>
-
-											<?php
-
-											if ($inputs['type']=='select')
-
-											{
-
-												if($$inputs['value']!='' && $inputs['value']=='code_id')
-
-												{ 
-
-												}
-
-												else
-
-												{
-
-													
-
-												
-
-											
-
-												?>
-
-												<select name="<?php echo $inputs['value']; ?>" id="<?php echo $inputs['value']; ?>" required <?php echo $inputs['attr']; ?>>
-
-												<?php
-
-												foreach($inputs['option'] as $val)
-
-												{
-
-													?>
-
-													<option <?php if($$inputs['value']==$val){echo"selected='selected'";} ?> value='<?php echo $val;?>'><?php echo $val;?></option>
-
-													<?php
-
-												}
-
-												?>
-
-												</select>
-
-												<span class="validation-status"></span>
-
-												<?php
-
-												}
-
-											}
-
-											else
-
-											{
-
-												?>
-
-												<input required <?php echo $inputs['attr']; ?> type="<?php echo $inputs['type']; ?>" name="<?php echo $inputs['value']; ?>" id="<?php echo $inputs['value']; ?>" size="40" maxlength="255" value="<?php echo $$inputs['value']; ?>" />
-
-												<span class="validation-status"></span>												
-
-												<?php
-
-											}
-
-											?>
-
-
-
-											</td>
-
-											<?php } else { ?>
-
-											<td><?php echo $$inputs['value']; ?></td>
-
-											<?php } ?>                                                                                                    
-
-										</tr>
-
-						<?php
-
+						if ( $inputs['value'] == 'address' ) {
+							$colclass =  'col-12';
+						} else {
+							$colclass =  'col-6';
 						}
+						
 
-						?>
+					?>
+	
+						<div class="col <?php echo $colclass; ?>">
+							<?php
+								if ($inputs['type']=='select') {
+									if($$inputs['value']!='' && $inputs['value']=='code_id') { 
+									} else {
+							?>
 
-</table>
+										<select name="<?php echo $inputs['value']; ?>" id="<?php echo $inputs['value']; ?>" required <?php echo $inputs['attr']; ?>>
+											<?php foreach($inputs['option'] as $val) { ?>
+											<option <?php if($$inputs['value']==$val){echo"selected='selected'";} ?> value='<?php echo $val;?>'><?php echo $val;?></option>
+											<?php } ?>
+										</select>
+										<span class="validation-status"></span>
 
-<center><input class='btn btn-primary btn-lg' type='submit' name='submit' value='Update'></center>
+							<?php
+									}
+								} else {
+							?>
+							
+									<input required <?php echo $inputs['attr']; ?> type="<?php echo $inputs['type']; ?>" name="<?php echo $inputs['value']; ?>" id="<?php echo $inputs['value']; ?>" size="40" maxlength="255" value="<?php echo $$inputs['value']; ?>" placeholder="<?php echo $inputs['value']; ?>" />
+									<span class="validation-status"></span>												
+							<?php
+								}
+ 							?>
+						</div>
+				
+					<?php } else { ?>
+							<div class="col-md-6"><?php echo $$inputs['value']; ?></div>
+					<?php } ?>                                                                                                    
+
+					<!-- </div> -->
+
+			<?php
+				}
+			?>
+
+	</div>
+
+<div class="action"><input class='nbtn nbtn-primary' type='submit' name='submit' value='Update'></div>
 
 </form>

@@ -11,39 +11,45 @@ ini_set("error_log", "php-error.log");
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <?php include("tmp/head.php"); ?>
-<style>
-@media only screen and (max-width: 500px) {
-	.contentnews img {
-		width: 100%;
-	}
-	input {
-		width: 100%;
-	}	
-	td, th {
-		padding: 0;
-		display: inline-block;
-	}	
-	.ardeecover{
-		overflow-x:auto;
-	}
-}
-</style>
 
-
-     <!-- /. WRAPPER  -->
-    <!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
-    <!-- JQUERY SCRIPTS -->
-    <script src="assets/js/jquery-1.10.2.js"></script>
-      <!-- BOOTSTRAP SCRIPTS -->
-    <script src="assets/js/bootstrap.min.js"></script>
-      <!-- CUSTOM SCRIPTS -->
-    <script src="assets/js/custom.js"></script>
 <body>
-     
-           
-          
+
     <div id="wrapper">
-         <div class="navbar navbar-inverse navbar-fixed-top" style='background-color: #fbfbfb;'>
+    	<?php include("tmp/nav.php"); ?>
+
+    	<div id="dashboard-body">
+    		<div class="topstrip">
+    			<?php if ( !empty($_SESSION['username']) ) { ?>
+    				<div class="theuser">Hi, <?php echo $_SESSION['firstname'] .' '. $_SESSION['lastname']; ?><span class="profilepic"></span></div>
+    			<?php } ?>
+    		</div>
+    		<?php
+				#echo $startDate = date('Y-m-d');
+				#cho "-";
+				#$wDays = 5;
+				#echo $new_date = date('Y-m-d', strtotime("{$startDate} +{$wDays} weekdays"));
+			
+				if ( $_SESSION['loggedin'] ) {
+					if ( $_GET['page']=='signin' || $_GET['page']=='register' ) {
+						$_GET['page'] = "home";
+					}
+				} else {
+					if ( $_GET['page']!='signin' && $_GET['page']!='register' && $_GET['page']!='home' && $_GET['page']!='forgotpass' && $_GET['page']!='signout' ) {
+						$_GET['page'] = "signin";
+					}				
+				}
+			
+				if( !$_GET['page'] ) {
+					include("pages/home.php");
+				} else {
+					echo "<div class='wrap'>";
+					include("pages/".$_GET['page'].".php");
+					echo "</div>";
+				}
+			?>
+    	</div>
+    </div>
+        <!-- <div class="navbar navbar-inverse navbar-fixed-top" style='background-color: #fbfbfb;'>
             <div class="adjust-nav">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse" style='background-color:grey;'>
@@ -55,59 +61,19 @@ ini_set("error_log", "php-error.log");
 					<img src='logo2.png' class='aimtoberich' style='height:100px;'>
 				</a>					
                 </div>
-<?php if(!empty($_SESSION['username'])) {  ?>
-<div style="color: black;padding: 47px 50px 5px 50px;float: right;font-size: 16px;"> Hi, <?php echo $_SESSION['firstname']; ?> <?php echo $_SESSION['lastname']; ?> &nbsp;
-</div>
-<?php } ?>
-
-
-
+				<?php if(!empty($_SESSION['username'])) {  ?>
+				<div style="color: black;padding: 47px 50px 5px 50px;float: right;font-size: 16px;"> Hi, <?php echo $_SESSION['firstname']; ?> <?php echo $_SESSION['lastname']; ?></div>
+				<?php } ?>
             </div>
-			
-			
-        </div>
-        <!-- /. NAV TOP  -->
-		<?php include("tmp/nav.php"); ?>
-        <!-- /. NAV SIDE  -->
-        
-<div id="page-wrapper" >
-	<div id="page-inner">
-		
-
-		<?php
-		#echo $startDate = date('Y-m-d');
-		#cho "-";
-		#$wDays = 5;
-		#echo $new_date = date('Y-m-d', strtotime("{$startDate} +{$wDays} weekdays"));
-		
-			if($_SESSION['loggedin']){
-				if($_GET['page']=='signin' || $_GET['page']=='register'){
-					$_GET['page'] = "home";
-				}
-			}else{
-				if($_GET['page']!='signin' && $_GET['page']!='register' && $_GET['page']!='home' && $_GET['page']!='forgotpass' && $_GET['page']!='signout'){
-					$_GET['page'] = "signin";
-				}				
-			}
-		
-			if(!$_GET['page']){
-				include("pages/home.php");
-			}else{
-				echo "<div class='ardeecover'>";
-				include("pages/".$_GET['page'].".php");
-				
-				echo "</div>";
-			}
-		?>
-	</div>
-</div>	
-		
-</div>
+        </div> -->
           
 
-
+<!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
+<script src="assets/js/jquery-1.10.2.js"></script> <!-- JQUERY SCRIPTS -->
+<script src="assets/js/bootstrap.min.js"></script> <!-- BOOTSTRAP SCRIPTS -->
+<script src="assets/js/custom.js"></script> <!-- CUSTOM SCRIPTS -->
     
- <script>
+<script>
 jQuery(document).ready(function(){
 
     // Select and loop the container element of the elements you want to equalise
