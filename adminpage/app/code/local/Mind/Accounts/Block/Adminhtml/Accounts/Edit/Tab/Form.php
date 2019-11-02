@@ -132,6 +132,13 @@ $fieldset->addField('email', 'text', array(
 'name' => 'email', 
 ));
 
+$fieldset->addField('refer', 'text', array( 
+'label' => Mage::helper('accounts')->__('Referrer Username'), 
+'class' => 'required-entry', 
+'required' => true, 
+'name' => 'refer', 
+));
+
 
 $fieldset->addField('date_created', 'date',array(
 'name'      =>    'date_created', /* should match with your table column name where the data should be inserted */
