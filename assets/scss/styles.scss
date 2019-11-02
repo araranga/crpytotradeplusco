@@ -1,0 +1,97 @@
+@import "includes/variables";
+@import "includes/mixins";
+@import "includes/iconfonts";
+@import "includes/fonts";
+@import "includes/global";
+@import "includes/grid";
+@import "includes/layout";
+@import "includes/navigation";
+
+body {
+	background: lighten($gray200, 3%);
+}
+
+#dashboard-header {
+	background: $white;
+	@include boxshadow(1.5rem 0 2.5rem rgba($black, .1));
+}
+
+.logo {
+	display: block;
+	text-align: center;
+	padding:2rem;
+	img {
+		width: 20rem;
+	}
+}
+
+.myaccount {
+	background: lighten($gray200, 3%);
+}
+
+.announcements {
+	max-width:80rem;
+	margin:0 auto;
+
+	.announcement-item {
+		position: relative;
+		padding:5rem 0 5rem 29rem;
+		min-height: 25.6rem;
+		border-bottom:.1px solid $gray200;
+
+		.ai-photo {
+			@extend .semisquarebox;
+			position: absolute;
+			left:0;
+			top:5rem;
+			background: $gray200;
+			width:24rem;
+		}
+
+		p { margin:0; }
+
+		&:first-child { min-height: 20.6rem;; padding-top:0; .ai-photo { top:0 } }
+
+	}
+
+}
+
+.form-container {
+	background: $white;
+	@include borderradius(1rem);
+	@include boxshadow(0 0 5rem rgba($black, .1));
+	padding:5rem;
+	margin:0 auto;
+
+	.npage-header {
+		margin-bottom:3rem;
+		padding-bottom:3rem
+	}
+
+	input, select {
+		width:100%;
+	}
+
+	.col-grp {
+		margin-left:-1.5rem;
+		margin-right:-1.5rem;
+	}
+
+	.col {
+		padding:1rem 1.5rem;
+	}
+
+	.action {
+		text-align: right;
+		margin-top:3rem;
+		input[type="submit"] { width:auto; }
+	}
+}
+
+.editprofile {
+	max-width: 80rem;
+}
+
+.changepassword { 
+	max-width: 50rem; .action input[type="submit"] { width:100% } 
+}

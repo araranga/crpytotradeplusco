@@ -1,0 +1,117 @@
+.myaccount ul,
+#main-menu,
+#main-menu ul { list-style: none; margin:0; padding:0 }
+
+.myaccount {
+	padding:2.5rem;
+	position: relative;
+	span {
+		cursor: pointer;
+		display: block;
+		text-align: left;
+		position: relative;
+		padding-left: 6.3rem;
+		padding-right: 3rem;
+		i {
+			font-size: 1.6rem;
+			position: absolute;
+			height:100%;
+			display: flex;
+			align-items:center;
+			justify-content:center;
+			top:0;
+			&.icon-user { width:4.8rem; left:0; border-right:.1rem solid darken($blue, 5%); @include boxshadow( .1rem 0 0 lighten($blue, 5%) ) }
+			&.icon-chevron-small-down { width:3rem; right:0; }
+		}
+		&.active { @include borderradius(.5rem .5rem 0 0) }
+	}
+	ul {
+		z-index: 1;
+		display: none;
+		position: absolute;
+		left:2.5rem;
+		background: $blue;
+		@include borderradius(0 0 .5rem .5rem);
+		@include calc(width, '100% - 5rem');
+		border-top:.1rem solid darken($blue, 5%);
+		li {
+			border-bottom:.1rem solid lighten($blue, 5%);
+			font-size:1.4rem;
+			&:first-child { border-top:.1rem solid lighten($blue, 5%); }
+			&:last-child { 
+				border:0;
+				a { border:0; @include borderradius(0 0 .5rem .5rem); }
+			}
+		}
+		a {
+			color:$white; 
+			display: block; 
+			border-bottom:.1rem solid darken($blue, 5%);
+			padding:1rem 1.5rem;
+			&:hover { text-decoration: none; background:darken($blue, 2.5%) }
+		}
+	}
+	span.active ~ ul { display: block } 
+}
+
+#main-menu {
+	border-top:.1rem solid $gray200;
+
+	ul {
+		display: none;
+	}
+
+	li { 
+		border-bottom:.1rem solid $gray200;
+		a {
+			text-decoration: none;
+			display: block;
+			color:lighten($gray400, 10%);
+			padding:1.75rem 1.5rem 1.75rem 4.8rem;
+			position: relative;
+			outline: none;
+			@include transition(all .5s ease);
+			i {
+				position: absolute;
+				width:4.8rem;
+				height:100%;
+				display:flex;
+				align-items:center;
+				justify-content:center;
+				top:0;
+				left:0;
+				@include transition(all .5s ease);
+			}
+			&:hover {
+				color:$black;
+				text-decoration: none;
+				i { color:$blue }
+			}
+		}
+	}
+	li.has-submenu {
+		position: relative;
+		a { padding-right:3rem }
+		&>a:after {
+			content: "\e902";
+			position: absolute;
+			right:0;
+			top:0;
+			height:100%;
+			width:3rem;
+			display: flex;
+			align-items:center;
+			justify-content:center;
+		}
+		&.active>a:after { content: "\e905";  }
+	}
+	li.active ul { display: block }
+
+	
+
+	li ul { padding:1.25rem 0; border-top:.1rem solid $gray200; }
+	li li { border:0 }
+	li li:last-child { border:0 }
+	li li a { font-size:1.4rem; padding:.75rem 1.5rem .75rem 4.8rem; text-decoration: none }
+
+}

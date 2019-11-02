@@ -1,0 +1,32 @@
+html, body { height: 100%; }
+
+#wrapper {
+	position: relative;
+	padding: 0 0 0 30rem;
+	display: flex;
+}
+
+#dashboard-header {
+	position: absolute;
+	height:100%;
+	left:0;
+	top:0;
+	width:30rem;
+	overflow-x:auto
+}
+
+#dashboard-body {
+	width:100%;
+
+	.topstrip {
+		background: $gray200;
+		display: flex;
+		justify-content:flex-end;
+		padding:1rem;
+	}
+
+	.wrap {
+		padding:5rem;
+	}
+
+} 
