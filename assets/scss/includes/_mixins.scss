@@ -87,3 +87,9 @@
 .squarebox:before { padding-top: 100%; }
 .semisquarebox:before { padding-top: 65%; }
 .rectanglebox:before { padding-top:50%; }
+
+.boxin {
+    background: $white;
+    @include borderradius(1rem);
+    @include boxshadow(0 0 5rem rgba($black, .1));
+}
