@@ -125,7 +125,7 @@ if(isset($_POST['security_type'])){
             <ul class="security-setting-list">
                 
                 <li>
-                    <form method='POST' action='<i></i>ndex.php?page=security'>
+                    <form method='POST' action='index.php?page=security'>
                         <h5 class="box-title">Verification login by email</h5>
                         <?php
                             if ( empty( $_SESSION['security_1email'] ) ) {
