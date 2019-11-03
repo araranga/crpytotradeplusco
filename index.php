@@ -68,10 +68,7 @@ ini_set("error_log", "php-error.log");
         </div> -->
           
 
-<!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
-<script src="assets/js/jquery-1.10.2.js"></script> <!-- JQUERY SCRIPTS -->
-<script src="assets/js/bootstrap.min.js"></script> <!-- BOOTSTRAP SCRIPTS -->
-<script src="assets/js/custom.js"></script> <!-- CUSTOM SCRIPTS -->
+
     
 <script>
 jQuery(document).ready(function(){
