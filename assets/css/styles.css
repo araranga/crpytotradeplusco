@@ -26,7 +26,7 @@
   padding-top: 50%;
 }
 
-.boxin, .amount-box .amount-box-list {
+.boxin, .course-list .course div, .registration-widget .registration-container, .login-widget .login-container, .amount-box .amount-box-list {
   background: #fff;
   border-radius: 1rem;
   -moz-border-radius: 1rem;
@@ -122,6 +122,10 @@
   content: "";
 }
 
+.icon-wallet:before {
+  content: "";
+}
+
 html {
   font-size: 62.5%;
 }
@@ -130,6 +134,14 @@ body {
   font-family: "Roboto", sans-serif;
   font-size: 1.6rem;
   color: #222;
+}
+
+a {
+  color: #4fbaeb;
+}
+a:hover {
+  color: #189ad5;
+  text-decoration: none;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -172,6 +184,8 @@ input[type=text],
 input[type=email],
 input[type=date],
 input[type=password],
+input[type=codes],
+input[type=float],
 select {
   border-radius: 0.5rem;
   -moz-border-radius: 0.5rem;
@@ -182,6 +196,8 @@ select {
 input[type=text],
 input[type=email],
 input[type=password],
+input[type=codes],
+input[type=float],
 select {
   padding: 1.5rem 2rem;
 }
@@ -213,6 +229,13 @@ input[type=submit].nbtn {
 .nbtn-primary {
   background: #4fbaeb;
   color: #fff;
+  transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -webkit-transition: all 0.5s ease;
+}
+.nbtn-primary:hover {
+  color: #fff;
+  background: #189ad5;
 }
 
 .npage-header {
@@ -253,6 +276,12 @@ form.form-container .col-grp {
 }
 form.form-container .col {
   padding: 1rem 1.5rem;
+}
+form.form-container .col:first-child {
+  padding-top: 0;
+}
+form.form-container .col:last-child {
+  padding-bottom: 0;
 }
 form.form-container .action {
   text-align: right;
@@ -360,6 +389,27 @@ form.form-container .action input[type=submit] {
   margin-bottom: 0;
 }
 
+.field-w-icon {
+  position: relative;
+}
+.field-w-icon i {
+  position: absolute;
+  height: -moz-calc(100% - .2rem);
+  height: -webkit-calc(100% - .2rem);
+  height: calc(100% - .2rem);
+  width: 4.8rem;
+  left: 0.1rem;
+  top: 0.1rem;
+  background: #fbfbfb;
+  border-right: 0.1rem solid #eee;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.field-w-icon input {
+  padding-left: 6.8rem;
+}
+
 @media (min-width: 768px) {
   .col-grp {
     display: flex;
@@ -421,6 +471,13 @@ html, body {
   position: relative;
   padding: 0 0 0 30rem;
   display: flex;
+}
+
+body.outside #wrapper {
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 #dashboard-header {
@@ -595,6 +652,12 @@ html, body {
 #main-menu li.has-submenu.active > a:after {
   content: "";
 }
+#main-menu li.active > a {
+  color: #222;
+}
+#main-menu li.active i {
+  color: #4fbaeb;
+}
 #main-menu li.active ul {
   display: block;
 }
@@ -634,6 +697,127 @@ body {
   width: 20rem;
 }
 
+.signinlogo {
+  width: 24rem;
+  display: block;
+  margin: 0 auto;
+}
+
+.login-widget {
+  max-width: 65.2rem;
+  margin: 0 auto;
+  padding: 8rem 7rem 0;
+  background: url(../img/login-bg.png) no-repeat top center;
+}
+.login-widget .npage-header {
+  border: 0;
+  padding: 0;
+  margin-bottom: 3rem;
+}
+.login-widget .callout {
+  margin-bottom: 2rem;
+}
+.login-widget .callout ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.login-widget .callout.callout-danger {
+  color: #db8c8c;
+}
+.login-widget .login-container {
+  padding: 5rem;
+  text-align: center;
+}
+.login-widget .col {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+.login-widget input[type=text], .login-widget input[type=password] {
+  width: 100%;
+  text-align: center;
+  padding: 2rem;
+}
+.login-widget #test {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+.login-widget button[type=submit] {
+  width: 100%;
+  padding: 2.5rem 2rem 2rem;
+  font-size: 1.6rem;
+}
+.login-widget .forget-register {
+  display: block;
+  color: #ddd;
+  font-size: 1.4rem;
+  margin-top: 3rem;
+}
+.login-widget .forget-register i {
+  margin: 0 0.75rem;
+  font-style: normal;
+}
+
+.registration-widget {
+  background: url(../img/register-bg.png) no-repeat top left;
+  max-width: 90rem;
+  margin: 0 auto;
+  padding: 12rem 9rem 0;
+}
+.registration-widget .registration-container {
+  padding: 5rem;
+}
+.registration-widget .npage-header {
+  text-align: center;
+  max-width: 40rem;
+  margin: 0 auto 3rem;
+  border: 0;
+  padding: 0;
+}
+.registration-widget .callout {
+  margin-bottom: 2rem;
+}
+.registration-widget .callout ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.registration-widget .callout.callout-danger {
+  color: #db8c8c;
+}
+.registration-widget .col-grp {
+  margin: 0 -1.5rem;
+}
+.registration-widget .col {
+  padding: 1rem 1.5rem;
+}
+.registration-widget input[type=text],
+.registration-widget input[type=email],
+.registration-widget input[type=password] {
+  width: 100%;
+  padding: 2rem;
+}
+.registration-widget #test {
+  display: flex;
+  justify-content: center;
+}
+.registration-widget #agreement {
+  border: 0.1rem solid #eee;
+  padding: 3rem;
+  color: #666;
+}
+.registration-widget #registerbutton.action {
+  display: none;
+  text-align: center;
+}
+.registration-widget #registerbutton.action input[type=submit] {
+  width: 30rem;
+}
+.registration-widget .loginlink {
+  text-align: center;
+}
+
 .myaccount {
   background: #f6f6f6;
 }
@@ -670,10 +854,10 @@ body {
   max-width: 80rem;
 }
 
-.changepassword {
+form.changepassword {
   max-width: 50rem;
 }
-.changepassword .action input[type=submit] {
+form.changepassword .action input[type=submit] {
   width: 100%;
 }
 
@@ -712,6 +896,223 @@ body {
 }
 .security-setting-list .action .nbtn {
   width: 100%;
+}
+
+form.code-activation {
+  max-width: 50rem;
+}
+form.code-activation .npage-header {
+  text-align: center;
+  padding-bottom: 0;
+  border: 0;
+}
+form.code-activation input[type=codes] {
+  text-align: center;
+}
+form.code-activation .action {
+  margin-top: 0;
+}
+form.code-activation .action input[type=submit].nbtn {
+  width: 100%;
+}
+
+.course-list {
+  margin-bottom: 5rem;
+}
+.course-list .course.course-Beginner h3 {
+  background: #9fdb8c;
+}
+.course-list .course.course-Beginner span.maximum strong {
+  color: #9fdb8c;
+}
+.course-list .course.course-Intermediate h3 {
+  background: #dbb58c;
+}
+.course-list .course.course-Intermediate span.maximum strong {
+  color: #dbb58c;
+}
+.course-list .course.course-Advance h3 {
+  background: #db8c8c;
+}
+.course-list .course.course-Advance span.maximum strong {
+  color: #db8c8c;
+}
+.course-list .course div {
+  text-align: center;
+  font-size: 1.8rem;
+}
+.course-list .course div h3, .course-list .course div p {
+  margin: 0;
+}
+.course-list .course div h3 {
+  border-radius: 1rem 1rem 0 0;
+  -moz-border-radius: 1rem 1rem 0 0;
+  -webkit-border-radius: 1rem 1rem 0 0;
+  padding: 2.5rem 1.5rem;
+  color: #fff;
+}
+.course-list .course div p {
+  padding: 3rem 3rem 4rem;
+}
+.course-list .course div i {
+  font-style: normal;
+  display: block;
+}
+.course-list .course div span {
+  display: block;
+  line-height: 2.6rem;
+}
+.course-list .course div span:nth-child(2) {
+  margin: 2rem 0;
+}
+.course-list .course div span.minimum strong {
+  font-size: 2.6rem;
+}
+.course-list .course div span.maximum {
+  line-height: 3.6rem;
+}
+.course-list .course div span.maximum i {
+  text-transform: uppercase;
+}
+.course-list .course div span.maximum strong {
+  font-size: 3.6rem;
+}
+.course-list .course div span.bonus-rate strong {
+  font-size: 2.4rem;
+  font-weight: 700;
+}
+
+.col.purchase .col.terms {
+  position: relative;
+  padding-left: 4rem;
+}
+.col.purchase .col.terms input[type=checkbox] {
+  width: auto;
+  border-color: #ddd;
+  position: absolute;
+  top: 1.5rem;
+  left: 1.5rem;
+  margin: 0;
+}
+
+#agreement {
+  display: none;
+}
+#agreement div {
+  border: 0.1rem solid #eee;
+  padding: 3rem;
+  color: #999;
+}
+#agreement p {
+  font-size: 1.2rem;
+  margin: 0 0 1.3rem;
+}
+#agreement p br {
+  display: none;
+}
+#agreement p:last-child {
+  margin-bottom: 0;
+}
+
+#registerbutton.action {
+  display: none;
+  padding-top: 0;
+  padding-bottom: 0;
+  margin-top: 2rem;
+  text-align: left;
+}
+
+form.transaction {
+  max-width: 50rem;
+}
+form.transaction .action input[type=submit] {
+  width: 100%;
+}
+
+form.withdrawal,
+form.dollartoewallet,
+form.fundtransfer {
+  max-width: 60rem;
+}
+form.withdrawal .npage-header,
+form.dollartoewallet .npage-header,
+form.fundtransfer .npage-header {
+  text-align: center;
+  padding: 0;
+  border: 0;
+}
+form.withdrawal .amount-box,
+form.dollartoewallet .amount-box,
+form.fundtransfer .amount-box {
+  margin-bottom: 4rem;
+}
+form.withdrawal .amount-box .amount-box-list,
+form.dollartoewallet .amount-box .amount-box-list,
+form.fundtransfer .amount-box .amount-box-list {
+  box-shadow: none;
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+  border: 0.1rem solid #eee;
+}
+form.withdrawal .action input[type=submit],
+form.dollartoewallet .action input[type=submit],
+form.fundtransfer .action input[type=submit] {
+  width: 100%;
+}
+
+.coversion-rate {
+  background: #c1e7f8;
+  text-align: center;
+  margin-bottom: 3rem;
+  border-radius: 1rem;
+  -moz-border-radius: 1rem;
+  -webkit-border-radius: 1rem;
+  padding: 3rem;
+}
+.coversion-rate h6 {
+  text-transform: uppercase;
+  font-family: "Roboto", sans-serif;
+  margin: 0;
+  font-size: 1.8rem;
+  letter-spacing: 0.1rem;
+}
+.coversion-rate p {
+  margin: 0;
+  font-size: 3rem;
+  font-weight: 700;
+}
+
+form.convert-currency-form .action {
+  margin-top: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+form.convert-currency-form input[readonly=readonly] {
+  background: #fbfbfb;
+  color: #b7b7b7;
+}
+
+form.dollartoewallet .npage-header {
+  text-align: left;
+}
+form.dollartoewallet input#pesos_value {
+  text-align: center;
+}
+
+form.forgotpassword {
+  max-width: 50rem;
+}
+form.forgotpassword .npage-header {
+  border: 0;
+  padding: 0;
+  text-align: center;
+}
+form.forgotpassword .col.action {
+  margin-top: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 /*# sourceMappingURL=styles.css.map */

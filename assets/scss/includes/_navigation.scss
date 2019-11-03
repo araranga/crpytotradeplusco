@@ -105,7 +105,11 @@
 		}
 		&.active>a:after { content: "\e905";  }
 	}
-	li.active ul { display: block }
+	li.active {
+		&>a { color:$gray900 }
+		i { color:$blue }
+		ul { display: block }
+	}
 
 	
 

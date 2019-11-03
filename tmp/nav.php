@@ -27,36 +27,37 @@
 					$q 		= mysql_query_cheat($query);
 					$row 	= mysqli_fetch_array_cheat($q);
 					$sums  	= $row['sums'];	
+					$currentpage = $_GET['page'];
 
 					if ( empty($sums) ) { $sums = 0; }	
 					//SELECT rate_name,rate_id FROM `tbl_rate` WHERE rate_start <= 2499					
 						$qrate= mysql_query_cheat("SELECT rate_name,rate_id FROM `tbl_rate` WHERE rate_start <= $sums");
 			?>
 
-				<li><a href="index.php?page=home" ><i class="icon-megaphone"></i>Announcement</a></li>	
-				<li>
+				<li <?php echo $currentpage == 'home' ? 'class="active"' : ''; ?>><a href="index.php?page=home" ><i class="icon-megaphone"></i>Announcement</a></li>	
+				<li <?php echo $currentpage == 'tutorials' ? 'class="active"' : ''; ?>>
 					<a href="#" ><i class="icon-book"></i>Trading Courses</a>
 					<ul>
 					<?php while ( $rowx = mysqli_fetch_array_cheat($qrate) ) { ?>
-						<li><a href="index.php?page=tutorials&id=<?php echo $rowx['rate_id']; ?>"><?php echo $rowx['rate_name']; ?></a></li>
+						<li <?php echo $currentpage == 'tutorials' ? 'class="active"' : ''; ?>><a href="index.php?page=tutorials&id=<?php echo $rowx['rate_id']; ?>"><?php echo $rowx['rate_name']; ?></a></li>
 					<?php } ?>
 					</ul>
 				</li>					
-				<li>
+				<li <?php echo $currentpage == 'convert' || $currentpage == 'convertpesos' || $currentpage == 'convertwallet' || $currentpage == 'fundtransfer' ? 'class="active"' : ''; ?>>
 					<a href="#" ><i class="icon-cycle"></i>Convert</a>
 					<ul>
-						<li><a href="index.php?page=convert" >BTC to USD</a></li>
-						<li><a href="index.php?page=convertpesos" >USD to BTC</a></li>
-						<li><a href="index.php?page=convertwallet" >USD to E-wallet</a></li>
-						<li><a href="index.php?page=fundtransfer" >Fund Transfer</a></li>
+						<li <?php echo $currentpage == 'convert' ? 'class="active"' : ''; ?>><a href="index.php?page=convert" >BTC to USD</a></li>
+						<li <?php echo $currentpage == 'convertpesos' ? 'class="active"' : ''; ?>><a href="index.php?page=convertpesos" >USD to BTC</a></li>
+						<li <?php echo $currentpage == 'convertwallet' ? 'class="active"' : ''; ?>><a href="index.php?page=convertwallet" >USD to E-wallet</a></li>
+						<li <?php echo $currentpage == 'fundtransfer' ? 'class="active"' : ''; ?>><a href="index.php?page=fundtransfer" >Fund Transfer</a></li>
 					</ul>
 				</li>
-				<li><a href="index.php?page=personalentity" ><i class="icon-price-tag"></i>My Products</a></li>
+				<li <?php echo $currentpage == 'personalentity' ? 'class="active"' : ''; ?>><a href="index.php?page=personalentity" ><i class="icon-price-tag"></i>My Products</a></li>
 				<!--<li><a href="index.php?page=reentry" ><i class="fa fa-pencil-square-o"></i>Add Entry</a></li>-->
-				<li><a href="index.php?page=gc" ><i class="icon-shopping-basket"></i>Purchase Products</a></li>					
-				<li><a href="index.php?page=btcwallet" ><i class="icon-share-alternitive"></i>Deposit</a></li>	
-				<li><a href="index.php?page=transaction" ><i class="icon-shield"></i>Verify My Deposit</a></li>	
-				<li><a href="index.php?page=withdrawal" ><i class="icon-dollar"></i>Withdrawal</a></li>
+				<li <?php echo $currentpage == 'gc' ? 'class="active"' : ''; ?>><a href="index.php?page=gc" ><i class="icon-shopping-basket"></i>Purchase Products</a></li>					
+				<li <?php echo $currentpage == 'btcwallet' ? 'class="active"' : ''; ?>><a href="index.php?page=btcwallet" ><i class="icon-share-alternitive"></i>Deposit</a></li>	
+				<li <?php echo $currentpage == 'transaction' ? 'class="active"' : ''; ?>><a href="index.php?page=transaction" ><i class="icon-shield"></i>Verify My Deposit</a></li>	
+				<li <?php echo $currentpage == 'withdrawal' ? 'class="active"' : ''; ?>><a href="index.php?page=withdrawal" ><i class="icon-dollar"></i>Withdrawal</a></li>
 				<li><a href="index.php?page=signout" ><i class="icon-log-out"></i>Logout</a></li>
 
 			<?php

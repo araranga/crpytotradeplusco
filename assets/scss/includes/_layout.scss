@@ -6,6 +6,13 @@ html, body { height: 100%; }
 	display: flex;
 }
 
+body.outside #wrapper { 
+	padding:0;
+	display: flex;
+	align-items:center;
+	justify-content:center;
+}
+
 #dashboard-header {
 	position: absolute;
 	height:100%;

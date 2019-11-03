@@ -44,7 +44,7 @@ if($row[''])
 					<span><em>Dollar</em> <?php echo number_format($row['balance_pesos'],2); ?></span>
 				</li>
 				<li>
-					<i class="icon-dollar"></i>
+					<i class="icon-wallet"></i>
 					<span><em>E-Wallet</em> <?php echo number_format($row['balance_wallet'],2); ?></span>
 				</li>
 			</ul>

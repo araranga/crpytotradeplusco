@@ -25,6 +25,125 @@ body {
 	}
 }
 
+.signinlogo {
+	width:24rem;
+	display: block;
+	margin:0 auto;
+}
+
+.login-widget {
+	max-width:65.2rem;
+	margin:0 auto;
+	padding:8rem 7rem 0;
+	background:url(../img/login-bg.png) no-repeat top center;
+
+	.npage-header {
+		border:0;
+		padding:0;
+		margin-bottom:3rem
+	}
+
+	.callout {
+		margin-bottom:2rem;
+		ul {
+			list-style: none;
+			margin:0;
+			padding:0;
+		}
+		&.callout-danger {
+			color:$red
+		}
+	}
+
+	.login-container {
+		@extend .boxin;
+		padding:5rem;
+		text-align: center;
+	}
+
+	.col {
+		padding-top:1rem;
+		padding-bottom:1rem;
+	}
+
+	input[type="text"], input[type="password"] { width:100%; text-align: center; padding:2rem; }
+
+	#test { display: flex; justify-content:center; margin-bottom:1.5rem; }
+
+	button[type="submit"] {
+		width: 100%;
+		padding:2.5rem 2rem 2rem;
+		font-size:1.6rem;
+	}
+
+	.forget-register {
+		display: block;
+		color:$gray300;
+		font-size:1.4rem;
+		margin-top:3rem;
+		i { margin:0 .75rem; font-style: normal }
+	}
+
+}
+
+.registration-widget {
+	background:url(../img/register-bg.png) no-repeat top left;
+	max-width:90rem;
+	margin:0 auto;
+	padding:12rem 9rem 0;
+
+	.registration-container {
+		@extend .boxin;
+		padding:5rem;
+	}
+
+	.npage-header {
+		text-align: center;
+		max-width:40rem;
+		margin:0 auto 3rem;
+		border:0;
+		padding:0;
+	}
+
+	.callout {
+		margin-bottom:2rem;
+		ul {
+			list-style: none;
+			margin:0;
+			padding:0;
+		}
+		&.callout-danger {
+			color:$red
+		}
+	}
+
+	.col-grp {
+		margin:0 -1.5rem;
+	}
+
+	.col {
+		padding:1rem 1.5rem;
+	}
+
+	input[type="text"],
+	input[type="email"],
+	input[type="password"] { width:100%; padding:2rem; }
+
+	#test {
+		display: flex;
+		justify-content:center;
+	}
+
+	#agreement {
+		border:.1rem solid $gray200;
+		padding:3rem;
+		color:$gray500;
+	}
+
+	#registerbutton.action { display:none; text-align: center; input[type="submit"] { width:30rem } }
+	.loginlink { text-align: center; }
+}
+
 .myaccount {
 	background: lighten($gray200, 3%);
 }
@@ -60,8 +179,9 @@ body {
 	max-width: 80rem;
 }
 
-.changepassword { 
-	max-width: 50rem; .action input[type="submit"] { width:100% } 
+form.changepassword { 
+	max-width: 50rem; 
+	.action input[type="submit"] { width:100% } 
 }
 
 .referral-link {
@@ -96,4 +216,189 @@ body {
 		.nbtn { width:100%; }
 	}
 
+}
+
+form.code-activation {
+	max-width:50rem;
+	.npage-header {
+		text-align: center;
+		padding-bottom:0;
+		border:0;
+	}
+	input[type="codes"] { text-align: center; }  
+	.action {
+		margin-top:0; 
+		input[type="submit"].nbtn {
+			width:100%;
+		}
+	}
+}
+
+.course-list {
+	margin-bottom:5rem;
+
+	.course {
+
+		&.course-Beginner {
+
+			h3 { background: $green }
+			span.maximum strong { color: $green } 
+
+		}
+
+		&.course-Intermediate {
+
+			h3 { background: $orange }
+			span.maximum strong { color: $orange } 
+
+		}
+
+		&.course-Advance {
+
+			h3 { background: $red }
+			span.maximum strong { color: $red } 
+
+		}
+
+	}
+
+	.course div {
+		@extend .boxin;
+		text-align: center;
+		font-size:1.8rem;
+
+		h3, p {
+			margin:0;
+		}
+
+		h3 {
+			@include borderradius(1rem 1rem 0 0);
+			padding:2.5rem 1.5rem;
+			color:$white;
+		}
+
+		p {
+			padding:3rem 3rem 4rem;
+		}
+
+		i { font-style: normal; display: block; }
+
+		span {
+			display: block;
+			&:nth-child(2) { margin:2rem 0; }
+			line-height: 2.6rem;
+			&.minimum strong { font-size:2.6rem; }
+			&.maximum {
+				line-height: 3.6rem;
+				i { text-transform: uppercase; }
+				strong { font-size:3.6rem } 
+			}
+			&.bonus-rate strong { font-size:2.4rem; font-weight: 700 }
+		}
+
+	}
+
+}
+
+.col.purchase .col.terms {
+	position: relative;
+	padding-left:4rem;
+	input[type="checkbox"] {
+		width: auto;
+		border-color:$gray300;
+		position: absolute;
+		top:1.5rem;
+		left:1.5rem;
+		margin:0;
+	}
+}
+
+#agreement {
+	display:none;
+	div {
+		border:.1rem solid $gray200;
+		padding:3rem;
+		color:$gray400;
+	}
+	
+	p {
+		font-size:1.2rem;
+		margin:0 0 1.3rem;
+		br { display: none }
+		&:last-child { margin-bottom:0; }
+	}
+}
+
+#registerbutton.action { display:none; padding-top:0; padding-bottom:0; margin-top:2rem; text-align: left }
+
+form.transaction {
+	max-width:50rem;
+	.action input[type="submit"] { width:100%; }
+}
+
+form.withdrawal,
+form.dollartoewallet,
+form.fundtransfer {
+	max-width: 60rem;
+	.npage-header {
+		text-align: center;
+		padding:0;
+		border:0;
+	}
+	.amount-box { 
+		margin-bottom:4rem; 
+		.amount-box-list {@include boxshadow(none); border:.1rem solid $gray200; }
+	}
+	.action input[type="submit"] { width:100%; }
+}
+
+.coversion-rate {
+	background: lighten($blue, 25%);
+	text-align: center;
+	margin-bottom:3rem;
+	@include borderradius(1rem);
+	padding:3rem;
+	h6 {
+		text-transform: uppercase;
+		font-family: $textfont;
+		margin:0;
+		font-size:1.8rem;
+		letter-spacing: .1rem;
+	}
+	p {
+		margin:0;
+		font-size: 3rem;	
+		font-weight: 700;
+	}
+}
+
+form.convert-currency-form {
+	.action { 
+		margin-top:0;
+		display: flex;
+		justify-content:space-between;
+		align-items:center;
+	}
+
+	input[readonly="readonly"] {
+		background: lighten($gray200, 5%);
+		color:darken($gray300, 15%);
+	}
+
+}
+
+form.dollartoewallet {
+	.npage-header { text-align: left }
+	input#pesos_value { text-align: center; }
+}
+
+form.forgotpassword {
+	max-width:50rem;
+	.npage-header { border:0; padding:0; text-align: center;}
+	.col.action {
+		margin-top:0;
+		display: flex;
+		justify-content:space-between;
+		align-items:center;
+	}
 }

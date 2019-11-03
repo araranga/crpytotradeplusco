@@ -8,6 +8,8 @@ body {
 	color:$gray900;
 }
 
+a { color:$blue; &:hover { color:darken($blue, 15%); text-decoration: none; } }
+
 h1, h2, h3, h4, h5, h6 { font-family: $headingfont; font-weight: 700; margin:0 0 1.5rem }
 
 h1 { font-size:	5rem; line-height: 5.4rem }
@@ -21,6 +23,8 @@ input[type="text"],
 input[type="email"],
 input[type="date"],
 input[type="password"],
+input[type="codes"],
+input[type="float"],
 select {
 	@include borderradius(.5rem);
 	border:.1rem solid darken($gray200, 3%);
@@ -29,6 +33,8 @@ select {
 input[type="text"],
 input[type="email"],
 input[type="password"],
+input[type="codes"],
+input[type="float"],
 select {
 	padding:1.5rem 2rem;
 }
@@ -55,6 +61,11 @@ input[type='submit'].nbtn { padding:2rem 2.5rem 1.75rem; }
 .nbtn-primary {
 	background: $blue;
 	color:$white;
+	@include transition(all 0.5s ease);
+	&:hover {
+		color:$white;
+		background:darken($blue, 15%);
+	}
 }
 
 .npage-header {
@@ -88,6 +99,8 @@ form.form-container {
 
 	.col {
 		padding:1rem 1.5rem;
+		&:first-child { padding-top:0; }
+		&:last-child { padding-bottom:0; }
 	}
 
 	.action {
@@ -182,4 +195,22 @@ form.form-container {
 
 	&:last-child { margin-bottom:0; }
 
+}
+
+
+.field-w-icon {
+	position: relative;
+	i {
+		position: absolute;
+		@include calc(height, '100% - .2rem');
+		width:4.8rem;
+		left:.1rem;
+		top:.1rem;
+		background: lighten($gray200, 5%);
+		border-right:.1rem solid $gray200;
+		display: flex;
+		align-items:center;
+		justify-content:center;
+	}
+	input {padding-left:6.8rem}
 }

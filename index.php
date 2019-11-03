@@ -12,18 +12,26 @@ ini_set("error_log", "php-error.log");
 <html xmlns="http://www.w3.org/1999/xhtml">
 <?php include("tmp/head.php"); ?>
 
-<body>
+<body <?php echo !$_SESSION['loggedin'] ? 'class="outside"' : ''; ?>>
 
     <div id="wrapper">
-    	<?php include("tmp/nav.php"); ?>
+    	<?php 
+	    	
+    		if ( $_SESSION['loggedin'] ) {
+	    		include("tmp/nav.php"); 
+	    	}
+
+    	?>
 
     	<div id="dashboard-body">
+    		<?php if ( $_SESSION['loggedin'] ) { ?>
     		<div class="topstrip">
     			<?php if ( !empty($_SESSION['username']) ) { ?>
     				<div class="theuser">Hi, <?php echo $_SESSION['firstname'] .' '. $_SESSION['lastname']; ?><span class="profilepic"></span></div>
     			<?php } ?>
     		</div>
     		<?php
+    			}
 				#echo $startDate = date('Y-m-d');
 				#cho "-";
 				#$wDays = 5;
