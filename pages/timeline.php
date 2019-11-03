@@ -73,7 +73,7 @@ if($row[''])
 			<div class="col-lg-12 col-md-12">
 				<div class="panel panel-primary">
 					<div class="panel-heading">
-						Total Withdrawals
+						Total Bitcoin Withdrawals
 					</div>
 					<div class="panel-body">
 						<p>₿<?php echo number_format($row3['sum'],7); ?>
