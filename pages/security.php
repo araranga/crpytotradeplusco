@@ -72,7 +72,6 @@ if(isset($_POST['security_type'])){
     <!-- Content Header (Page header) -->
     <section class="npage-header">
         <h2>Security</h2>
-        <p>Phasellus tincidunt est vel luctus elementum. Pellentesque pellentesque arcu nunc, eu porta mauris ultricies eu.</p>
     </section>
 
     <!-- Main content -->

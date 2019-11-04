@@ -104,7 +104,6 @@ $payment['btc'] = $fields;
 <form method="POST" action="" autocomplete="off" class="form-container code-activation">
 	<div class="npage-header">
 		<h2>Code Activation</h2>   
-		<p>Phasellus tincidunt est vel luctus elementum arcu nunc.</p>
 	</div>
 
 

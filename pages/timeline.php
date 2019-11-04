@@ -15,7 +15,6 @@ if($row[''])
 ?>
 <div class="npage-header">
 	<h2>My Timeline</h2>
-	<p>Phasellus tincidunt est vel luctus elementum. Pellentesque pellentesque arcu nunc, eu porta mauris ultricies eu.</p>
 </div>
 
 <div class="amount-box referral-link">

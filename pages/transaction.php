@@ -78,7 +78,6 @@ $payment['btc'] = $fields;
 <form method="POST" action="" autocomplete="off" class="form-container transaction">
 	<div class="npage-header">
 		<h2>Transactions</h2>
-		<p>Phasellus tincidunt est vel luctus elementum. Pellentesque pellentesque arcu nunc, eu porta mauris ultricies eu.</p>
 	</div>
 
 	<div class="col-grp">

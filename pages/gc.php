@@ -119,7 +119,6 @@ function pin()
 
 <div class="npage-header">
     <h2>Buy Courses</h2>
-    <p>Phasellus tincidunt est vel luctus elementum. Pellentesque pellentesque arcu nunc, eu porta mauris ultricies eu.</p>
 </div>
 
 <div class="col-grp course-list">

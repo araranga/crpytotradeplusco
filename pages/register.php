@@ -110,7 +110,6 @@
     <div class="registration-container">
         <div class="npage-header">
             <h2>Sign Up</h2>
-            <p>Nulla maximus sit amet est at luctus. Integer mollis consequat arcu sed posuere.</p>
         </div>
         <div class="callout callout-danger">
             <ul>

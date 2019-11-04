@@ -137,7 +137,6 @@ button[disabled], html input[disabled] {
 <form method='POST' action='' class="form-container editprofile">
 	<div class="npage-header">
 		<h2>Edit Profile</h2>
-		<p>Phasellus tincidunt est vel luctus elementum. Pellentesque pellentesque arcu nunc, eu porta mauris ultricies eu.</p>
 	</div>
 	<div class="col-grp">
 		<?php

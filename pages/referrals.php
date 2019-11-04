@@ -21,7 +21,6 @@ $qrsum = mysqli_fetch_array_cheat(mysql_query_cheat($queryx));
 
 <div class="npage-header">
     <h2>My Referrals (Total: <?php echo $qrsum['rebs']; ?>)</h2>
-    <p>Phasellus tincidunt est vel luctus elementum. Pellentesque pellentesque arcu nunc, eu porta mauris ultricies eu.</p>
 </div>
 <div class="ntable">
 	<table class="table table-striped table-bordered table-hover">

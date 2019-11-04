@@ -120,7 +120,6 @@ if(isset($_SESSION['loggedin'])){
     <div class="login-container">
         <div class="npage-header">
             <h2>Sign In</h2>
-            <p>Nulla maximus sit amet est at luctus. Integer mollis consequat arcu sed posuere.</p>
         </div>
         <?php
             if ( count($error) != 0 ) {

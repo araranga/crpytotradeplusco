@@ -19,7 +19,6 @@ $q = mysql_query_cheat($query);
 </style> -->
 <div class="npage-header">
 	<h2>Announcements</h2>
-	<p>Phasellus tincidunt est vel luctus elementum. Pellentesque pellentesque arcu nunc, eu porta mauris ultricies eu.</p>
 </div>
 <?php
 if ( $query ) :

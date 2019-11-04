@@ -51,7 +51,6 @@ $monthly = "amount,maturity_date,maturity_amount";
 
 <div class="npage-header">
     <h2>My Products</h2>
-    <p>Phasellus tincidunt est vel luctus elementum. Pellentesque pellentesque arcu nunc, eu porta mauris ultricies eu.</p>
 </div>
 <div class="ntable">
     <table>

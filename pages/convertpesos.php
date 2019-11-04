@@ -1,3 +1,5 @@
+
+
 <?php
 require_once("./connect.php");
 $accounts_id = $_SESSION['accounts_id'];
@@ -69,7 +71,6 @@ $row = mysqli_fetch_array_cheat($q);
 
 <div class="npage-header">
 	<h2>Convert Dollars to BTC</h2>
-	<p>Phasellus tincidunt est vel luctus elementum. Pellentesque pellentesque arcu nunc, eu porta mauris ultricies eu.</p>
 </div>
 
 <div class="col-grp">
