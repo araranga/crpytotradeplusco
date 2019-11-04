@@ -115,151 +115,128 @@ if(isset($_SESSION['loggedin'])){
 
 
 ?>
-<div class="panel panel-default">
+<img src='logo2.png' class='aimtoberich signinlogo'>
+<div class="login-widget">
+    <div class="login-container">
+        <div class="npage-header">
+            <h2>Sign In</h2>
+        </div>
+        <?php
+            if ( count($error) != 0 ) {
+        ?>
+            <div class="callout callout-danger">
+                <ul>
+                <?php
+                    foreach($error as $errorval){
+                        echo '<li>'.$errorval.'</li>';
+                    }
+                ?>
+                </ul>
+            </div>
+        <?php
 
-                        <div class="panel-heading" style='  background-color: #ddd'>
-
-                        <strong>Login</strong>  
-
-</div>
-<div class="panel-body">
-  <!-- /.login-logo -->
-  <div class="login-box-body">
-
-
-<?php
-  if(count($error)!=0){
-?>
-
-<div class="callout callout-danger">
-          <p>
-            <?php
-              foreach($error as $errorval){
-                echo $errorval."<br>";
-              }
-            ?>
-          </p>
-</div>
-<?php
-  }
-?>
-
-<?php
-  if(count($success)!=0){
-?>
-
-<div class="callout callout-success">
-          <p>
-            <?php
-              foreach($success as $successv){
-                echo $successv."<br>";
-              }
-            ?>
-          </p>
-</div>
-<?php
-  }
-?>
-
-
-<form action="index.php?page=signin" method="post">
-    
-      <?php
-        if(!empty($_SESSION['security_1email'])){
-          $securelog = 1;
-      ?>
-      <p class="login-box-msg">Please put correct code sent to your email.</p>
-      <div class="form-group has-feedback">
-        <input name="security_1email" type="text" class="form-control" placeholder="Email Code" required>
-      </div>
-      <?php
-      }
-      ?>
-    
-      <?php
-        if(!empty($_SESSION['security_2gauth'])){
-          $securelog = 1;
-      ?>
-      <p class="login-box-msg">Please put correct code in authenticator.</p>
-      <div class="form-group has-feedback">
-        <input name="security_2gauth" type="text" class="form-control" placeholder="Auth Code" required>
-      </div>
-      <?php
-      }
-      ?>
-
-
-      <?php
-        if($securelog==1){
-          ?>
-           <input name="username" type="hidden" value="<?php echo $_SESSION['username']; ?>">
-           <input name="password" type="hidden" value="<?php echo $_SESSION['password']; ?>">
-           <input name="g-recaptcha-response" type="hidden" value="<?php echo md5($_SESSION['password']); ?>">
-          <?php
-        }
-      ?>
-
-      <?php
-        if(empty($_SESSION['username'])){
-      ?>
-      <p class="login-box-msg">Sign in to start your session</p>
-      <div class="form-group has-feedback">
-        <input name="username" type="text" class="form-control" placeholder="Username" required>
-      </div>
-      <div class="form-group has-feedback">
-        <input name="password" type="password" class="form-control" placeholder="Password" required>
-      </div>
-
- 
-
-      <?php
-      }
-      ?>
-
-
-      <div class='row'>
-        <div class='col-xs-12'>
-          <script type="text/javascript">
-          var onloadCallback = function() {
-          grecaptcha.render('test', {
-          'sitekey' : '6LfmMTkUAAAAAI-BqOClWhvBByuZ65CZmFgvp9px',
-          'callback' : verifyCallback,
-          });
-          };
-         var verifyCallback = function(response) {
-            if(response!=''){
-             jQuery('#recap').val(response);
             }
-          };
 
-          </script>
-          <div id='test' style='margin-left: 10px;'></div>
-          <br/>
-        </div>
-      </div>  
+            if ( count($success) !=0 ) {
 
-    <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit"
-        async defer>
-    </script>
+        ?>
+            <div class="callout callout-success">
+                <ul>
+                <?php
+                    foreach($success as $successv){
+                        echo'<li>'. $successv."</li>";
+                    }
+                ?>
+                </ul>
+            </div>
+        <?php
+            }
+        ?>
 
-      <div class="row">
-        <!-- /.col -->
-        <div class="col-xs-12">
-          <button type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
-        </div>
-        <!-- /.col -->
-      </div>
-    </form>
+        <form action="index.php?page=signin" method="post" class="signin-form">
 
-    <!-- /.social-auth-links -->
-      <?php
-        if(empty($_SESSION['username'])){
-      ?>
-    <a href="index.php?page=forgotpass">I forgot my password</a><br>
-    <a href="index.php?page=register" class="text-center">Register a new membership</a>
-    <?php
-    }
-  ?>
-  </div>
-  <!-- /.login-box-body -->
+            <?php
+                if ( !empty( $_SESSION['security_1email'] ) ) {
+                    $securelog = 1;
+            ?>
+                    <p class="login-box-msg">Please put correct code sent to your email.</p>
+                    <div class="form-group has-feedback">
+                        <input name="security_1email" type="text" class="form-control" placeholder="Email Code" required>
+                    </div>
+            <?php
+
+                }
+
+               if ( !empty( $_SESSION['security_2gauth'] ) ) {
+                    $securelog = 1;
+            ?>
+                    <p class="login-box-msg">Please put correct code in authenticator.</p>
+                    <div class="form-group has-feedback">
+                        <input name="security_2gauth" type="text" class="form-control" placeholder="Auth Code" required>
+                    </div>
+            <?php
+
+                }
+
+                if ( $securelog == 1 ) {
+
+            ?>
+                    <input name="username" type="hidden" value="<?php echo $_SESSION['username']; ?>">
+                    <input name="password" type="hidden" value="<?php echo $_SESSION['password']; ?>">
+                    <input name="g-recaptcha-response" type="hidden" value="<?php echo md5($_SESSION['password']); ?>">
+            <?php
+
+                }
+
+                if ( empty( $_SESSION['username'] ) ) {
+
+            ?>
+                    <!-- <p class="login-box-msg">Sign in to start your session</p> -->
+                    <div class="col-grp">
+                        <div class="col col-12">
+                            <input name="username" type="text" placeholder="Username" required />
+                        </div>
+                        <div class="col col-12">
+                            <input name="password" type="password" placeholder="Password" required />
+                        </div>
+                    </div>
+
+            <?php
+
+                }
+
+            ?>
+
+            <div class='col-grp'>
+                <div class='col col-12'>
+                    <script type="text/javascript">
+                        var onloadCallback = function() {
+                            grecaptcha.render('test', {
+                                'sitekey' : '6LfmMTkUAAAAAI-BqOClWhvBByuZ65CZmFgvp9px',
+                                'callback' : verifyCallback,
+                            });
+                        };
+                        var verifyCallback = function(response) {
+                            if ( response != '' ) {
+                                jQuery('#recap').val(response);
+                            }
+                        };
+                    </script>
+
+                    <div id='test'></div><br/>
+                </div>
+            </div>
+            <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit" async defer></script>  
+
+            <div class="action"><button type="submit" class="nbtn nbtn-primary">Sign In</button></div>
+
+            <?php if ( empty( $_SESSION['username'] ) ) { ?>
+            <span class="forget-register">
+                <a href="index.php?page=forgotpass">I forgot my password</a> <i>|</i> <a href="index.php?page=register" class="text-center">Register a new membership</a>
+            </span>
+            <?php } ?>
+
+        </form>
+
+    </div>
 </div>

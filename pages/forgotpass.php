@@ -26,39 +26,25 @@ if($_GET['error']==1)
 
 
 
-                        <div class="panel panel-default">
+                        
 
-                        <div class="panel-heading" style=' background-color: #ddd'>
+                                <form role="form" class="form-container forgotpassword">
 
-                        <strong>Forgot Pass</strong>  
+									<div class="npage-header">
+										<h2>Forgot Password?</h2>
+									</div>
 
-                        </div>
+                                    <div class="col-grp">
+										<div class="col col-12">
+											<input id="email" type="email" placeholder="Your Email" />
+										</div>
+										<div class="col col-12 action">
+											<a href='index.php?page=signin'><i class="icon-chevron-small-left"></i> Back</a>
+											<a href="javascript:void(0);" onclick="processemail()" class="nbtn nbtn-primary ">Send now</a>		
+										</div>          
+									</div>            
 
-                            <div class="panel-body">
-
-                                <form role="form">
-
-                                       <br />
-
-                                     <div class="form-group input-group">
-
-                                            <span class="input-group-addon"><i class="fa fa-tag"  ></i></span>
-
-                                            <input id="email" type="email" class="form-control" placeholder="Your Email" />
-
-                                        </div>                              
-
-                                     <a href="javascript:void(0);" onclick="processemail()" class="btn btn-primary ">Send now</a>
-
-									 <a href='index.php?page=signin' style='float:right;'><< Back</a>
-
-                                    </form>
-
-                            </div>
-
-                          
-
-                        </div>
+                                </form>
 
                     </div>
 

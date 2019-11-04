@@ -1,17 +1,18 @@
 <?php
-require_once("./connect.php");
-$accounts_id = $_SESSION['accounts_id'];
-$q = mysql_query_cheat("SELECT * FROM tbl_accounts WHERE accounts_id='$accounts_id'");
-$row = mysqli_fetch_array_cheat($q);
-function trans()
-{
-    $characters = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-    $randstring = '';
-    for ($i = 0; $i < 12; $i++) {
-        $randstring .= $characters[rand(0, strlen($characters))];
-    }
-    return $randstring;
-}
+	require_once("./connect.php");
+	$accounts_id = $_SESSION['accounts_id'];
+	$q = mysql_query_cheat("SELECT * FROM tbl_accounts WHERE accounts_id='$accounts_id'");
+	$row = mysqli_fetch_array_cheat($q);
+
+	function trans()
+	{
+	    $characters = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+	    $randstring = '';
+	    for ($i = 0; $i < 12; $i++) {
+	        $randstring .= $characters[rand(0, strlen($characters))];
+	    }
+	    return $randstring;
+	}
 
 	if($_POST['submit']!='')
 	{
@@ -31,7 +32,7 @@ function trans()
 	}
 //
 ?>
-<h2>Transactions</h2>   
+
 <?php
 if($error!='')
 {
@@ -60,25 +61,45 @@ $payment['btc'] = $fields;
 
 <?php
 	foreach($payment as $paychildkey=>$paychild){
-		echo "<table id='$paychildkey' style='display:none;'>";
+		echo "<div id='$paychildkey' style='display:none;'>";
 		foreach($paychild as $pkey=>$pval){	
 				?>
-				 <tr class='antibug'>
-					<td style="width:180px;" class="key" valign="top"><label for="accounts_names"><?php echo $pval; ?>:</label></td>
-					<td>
-					   <input  autocomplete="off" style="width: 302px;" required="" type="text" name="fields[<?php echo $pkey; ?>]" id="withdraw" size="40" maxlength="255" value="">
-					   <span class="validation-status"></span>												
-					</td>
-				 </tr>				
+				<div class='antibug'>
+					<input placeholder="<?php echo $pval; ?>"  autocomplete="off" required="" type="text" name="fields[<?php echo $pkey; ?>]" id="withdraw" size="40" maxlength="255" value="">
+					<span class="validation-status"></span>												
+				</div>				
 				<?php
 		}
-		echo "</table>";
+		echo "</div>";
 	}
 ?>
 
 
-<form method="POST" action="" autocomplete="off">
-   <table width="100%">
+<form method="POST" action="" autocomplete="off" class="form-container transaction">
+	<div class="npage-header">
+		<h2>Transactions</h2>
+	</div>
+
+	<div class="col-grp">
+		<div class="col col-12" style="display: none">
+			<select id='claimtypeid' name='claimtype' onchange="widraw(this.value)" required>
+				<option value='cebuana'>Cebuana</option>
+				<option value='lbc'>LBC</option>
+				<option value='bank_bpi'>BPI Deposit</option>
+				<option value='bank_bdo'>BDO Deposit</option>
+				<option value='btc' selected='selected'>BTC</option>
+			</select>	
+		</div>
+		<div class="col col-12" id='optionspayment'></div>
+		<div class="col col-12" id='defaultfield' style='display:none;'>
+			<div class="antibug">
+               <input required="" type="password" name="password" id="password" size="40" maxlength="255" value="" placeholder="Please enter password:">
+               <span class="validation-status"></span>												
+	         </div>
+		</div>
+	</div>
+	<div class="action"><input class="nbtn nbtn-primary" type="submit" name="submit" value="Process"></div>
+   <!-- <table width="100%">
       <tbody>
 
          <tr style='display:none;'>
@@ -95,8 +116,8 @@ $payment['btc'] = $fields;
          </tr>
 	</table>
 		 <table id='optionspayment'>
-		 </table>  
-   <table id='defaultfield' width="100%" style='display:none;'>
+		 </table>   -->
+   <!-- <table id='defaultfield' width="100%" style='display:none;'>
       <tbody>					 
 		 
          <tr class="antibug">
@@ -107,23 +128,21 @@ $payment['btc'] = $fields;
             </td>
          </tr>
       </tbody>
-   </table>
- 
-   <br>
-   <center><input class="btn btn-primary btn-lg" type="submit" name="submit" value="Process"></center>
+   </table> -->
+   
 </form>
 <script>
 	jQuery('#claimtypeid').trigger('change');
-function widraw(myval)
-{
-	if(myval){
-		jQuery('#defaultfield').show();
-	}else{
-		jQuery('#defaultfield').hide();
+	function widraw(myval)
+	{
+		if(myval){
+			jQuery('#defaultfield').show();
+		}else{
+			jQuery('#defaultfield').hide();
+		}
+
+		jQuery('#optionspayment').html('');
+		jQuery('#optionspayment').html(jQuery('#'+myval).html());
+
 	}
-
-	jQuery('#optionspayment').html('');
-	jQuery('#optionspayment').html(jQuery('#'+myval).html());
-
-}
 </script>

@@ -55,11 +55,7 @@ function trans()
 		}
 	}
 //
-?>
-<h2>Withdrawal Request</h2>   
 
-<p>BTC Balance: (₿<?php echo $row['balance'];?>)</p>
-<?php
 if($error!='')
 {
 ?>
@@ -112,61 +108,89 @@ $payment['btc'] = $fields;
 
 <?php
 	foreach($payment as $paychildkey=>$paychild){
-		echo "<table id='$paychildkey' style='display:none;'>";
+		echo "<div id='$paychildkey' style='display:none;'>";
 		foreach($paychild as $pkey=>$pval){	
 				?>
-				 <tr class='antibug'>
-					<td style="width:180px;" class="key" valign="top"><label for="accounts_name"><?php echo $pval; ?>:</label></td>
-					<td>
-					   <input style="width: 302px;" required="" type="text" name="fields[<?php echo $pkey; ?>]" id="withdraw" size="40" maxlength="255" value="">
+				 <div class='antibug'>
+					<!-- <td style="width:180px;" class="key" valign="top"><label for="accounts_name"><?php //echo $pval; ?>:</label></td> -->
+					   <input required="" type="text" name="fields[<?php echo $pkey; ?>]" id="withdraw" size="40" maxlength="255" value="" placeholder="<?php echo $pval; ?>">
 					   <span class="validation-status"></span>												
-					</td>
-				 </tr>				
+				 </div>				
 				<?php
 		}
-		echo "</table>";
+		echo "</div>";
 	}
 ?>
 
 
-<form method="POST" action="">
-   <table width="100%">
+<form method="POST" action="" class="form-container withdrawal">
+	<div class="npage-header">
+		<h2>Withdrawal Request</h2>
+		<!-- <p>Phasellus tincidunt est vel luctus elementum. Pellentesque pellentesque arcu nunc, eu porta mauris ultricies eu.</p>	 -->
+	</div>
+
+	<div class="amount-box user-balance">
+		<ul class="amount-box-list">
+			<li>
+				<i class="icon-bitcoin"></i>
+				<span><em>Bitcoin</em> <?php echo $row['balance'];?></span>
+			</li>
+		</ul>
+	</div>
+
+	<div class="col-grp">
+		<div class="col col-12">
+			<select id='claimtypeid' name='claimtype' onchange="widraw(this.value)" required>
+				<!-- <option value='bank'>Bank Deposit</option> -->
+				<option value='btc' selected='selected'>BTC</option>
+			</select>
+		</div>
+		<div class="col col-12"><div id='optionspayment'></div></div>
+		<div class="col col-12">
+			<div class='antibug'>
+				<input required="" type="float" name="withdraw" id="withdraw" size="40" maxlength="255" value="" placeholder="Amount to withdraw">
+				<span class="validation-status"></span>	
+			</div>
+		</div>
+		<div class="col col-12">
+			<div class='antibug'>
+				<input required="" type="password" name="password" id="password" size="40" maxlength="255" value="" placeholder="Please enter password">
+				<span class="validation-status"></span>
+			</div>
+		</div>
+	</div>
+	<div class="action"><input class="nbtn nbtn-primary" type="submit" name="submit" value="Process"></div>
+	
+   <!-- <table width="100%">
       <tbody>
 
          <tr>
-            <td style="width:180px;" class="key" valign="top"><label for="accounts_name">Withdrawal Type</label></td>
+            <td style="width:180px;" class="key" valign="top"><label for="accounts_name"></label></td>
             <td>
-				<select id='claimtypeid' name='claimtype' onchange="widraw(this.value)" required>
-						<!-- <option value='bank'>Bank Deposit</option> -->
-						<option value='btc' selected='selected'>BTC</option>
-				</select>											
+
             </td>
          </tr>
-	</table>
-		 <table id='optionspayment'>
-		 </table>  
-   <table id='defaultfield' width="100%" style='display:none;'>
+	</table> -->
+		 <!-- <table id='optionspayment'>
+		 </table> -->  
+   <!-- <table id='defaultfield' width="100%" style='display:none;'>
       <tbody>					 
         <tr class='antibug'>
             <td style="width:180px;" class="key" valign="top"><label for="accounts_name">Amount to withdraw:</label></td>
             <td>
-               <input style="width: 302px;" required="" type="float" name="withdraw" id="withdraw" size="40" maxlength="255" value="">
-               <span class="validation-status"></span>												
+               											
             </td>
          </tr>
 		 
          <tr class="antibug">
             <td style="width:180px;" class="key" valign="top"><label for="accounts_name">Please enter password:</label></td>
             <td>
-               <input style="width: 302px;" required="" type="password" name="password" id="password" size="40" maxlength="255" value="">
-               <span class="validation-status"></span>												
+               												
             </td>
          </tr>
       </tbody>
-   </table>
+   </table> -->
  
-   <br>
-   <center><input class="btn btn-primary btn-lg" type="submit" name="submit" value="Process"></center>
 </form>
 <script>
 	jQuery('#claimtypeid').trigger('change');

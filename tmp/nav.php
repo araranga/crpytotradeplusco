@@ -1,156 +1,83 @@
-        <nav class="navbar-default navbar-side" role="navigation">
-            <div class="sidebar-collapse">
-                <ul class="nav" id="main-menu">
+<header id="dashboard-header">
+	<a class="logo" href='index.php?page=home'>
+		<picture>
+			<source media="(max-width: 1000px)" srcset="assets/img/logo-only.png">
+			<img src="logo2.png" alt="" />
+		</picture>
+		<!-- <img src='logo2.png' class='aimtoberich'> -->
+	</a>
+	<?php if ( $_SESSION['loggedin'] ) { ?>
+	<div class="myaccount">
+		<span class="nbtn nbtn-primary"><i class="icon-user"></i> <em>My Account</em> <i class="icon-chevron-small-down"></i></span>
+		<ul>
+			<li><a href="index.php?page=editprofile">Edit Profile</a></li>   
+			<li><a href="index.php?page=changepass">Change Password</a></li>
+			<li><a href="index.php?page=withdrawhistory">Withdrawal History</a></li>
+			<li><a href="index.php?page=timeline">My Timeline</a></li>  
+			<li><a href="index.php?page=security">Security</a></li>  
+			<li><a href="index.php?page=rebate">Referrals</a></li>  
+			<li><a href="index.php?page=codeactivate">Code Activate</a></li>  
+		</ul>
+	</div>
+	<?php } ?>
+	<nav>
+		<div>
+			<ul id="main-menu">
 					
-			
-					<?php
+			<?php
 
-					if($_SESSION['loggedin']){
+				if ( $_SESSION['loggedin'] ) {
+					$query 	= 'SELECT SUM(amount) as sums FROM tbl_buycode_history WHERE accounts_id = '.$_SESSION['accounts_id'];
+					$q 		= mysql_query_cheat($query);
+					$row 	= mysqli_fetch_array_cheat($q);
+					$sums  	= $row['sums'];	
+					$currentpage = $_GET['page'];
 
-
-					$query = 'SELECT SUM(amount) as sums FROM tbl_buycode_history WHERE accounts_id = '.$_SESSION['accounts_id'];
-
-					$q = mysql_query_cheat($query);
-
-					$row = mysqli_fetch_array_cheat($q);
-
-					 $sums  = $row['sums'];	
-
-					 if(empty($sums)){
-					 	$sums = 0;
-					 }	
-
+					if ( empty($sums) ) { $sums = 0; }	
 					//SELECT rate_name,rate_id FROM `tbl_rate` WHERE rate_start <= 2499					
-							
-
 						$qrate= mysql_query_cheat("SELECT rate_name,rate_id FROM `tbl_rate` WHERE rate_start <= $sums");
-					?>
-                    <li>
-                        <a href="index.php?page=home" ><i class="fa fa-desktop"></i>Announcement</a>
-                    </li>	
-                    <li>
-                        <a href="#" ><i class="fa fa-book"></i>Trading Courses</a>
-                        <ul>
-                        	<?php
-                        		while($rowx = mysqli_fetch_array_cheat($qrate)){
-                        			?>
+			?>
 
-										<li>
-											<a href="index.php?page=tutorials&id=<?php echo $rowx['rate_id']; ?>"><i class="fa fa-pencil-square-o"></i><?php echo $rowx['rate_name']; ?></a>
-										</li>
+				<li <?php echo $currentpage == 'home' ? 'class="active"' : ''; ?>><a href="index.php?page=home" ><i class="icon-megaphone"></i> <span>Announcement</span></a></li>	
+				<li <?php echo $currentpage == 'tutorials' ? 'class="active"' : ''; ?>>
+					<a href="#" ><i class="icon-book"></i> <span>Trading Courses</span></a>
+					<ul>
+					<?php while ( $rowx = mysqli_fetch_array_cheat($qrate) ) { ?>
+						<li <?php echo $currentpage == 'tutorials' ? 'class="active"' : ''; ?>><a href="index.php?page=tutorials&id=<?php echo $rowx['rate_id']; ?>"><?php echo $rowx['rate_name']; ?></a></li>
+					<?php } ?>
+					</ul>
+				</li>					
+				<li <?php echo $currentpage == 'convert' || $currentpage == 'convertpesos' || $currentpage == 'convertwallet' || $currentpage == 'fundtransfer' ? 'class="active"' : ''; ?>>
+					<a href="#" ><i class="icon-cycle"></i> <span>Convert</span></a>
+					<ul>
+						<li <?php echo $currentpage == 'convert' ? 'class="active"' : ''; ?>><a href="index.php?page=convert" >BTC to USD</a></li>
+						<li <?php echo $currentpage == 'convertpesos' ? 'class="active"' : ''; ?>><a href="index.php?page=convertpesos" >USD to BTC</a></li>
+						<li <?php echo $currentpage == 'convertwallet' ? 'class="active"' : ''; ?>><a href="index.php?page=convertwallet" >USD to E-wallet</a></li>
+						<li <?php echo $currentpage == 'fundtransfer' ? 'class="active"' : ''; ?>><a href="index.php?page=fundtransfer" >Fund Transfer</a></li>
+					</ul>
+				</li>
+				<li <?php echo $currentpage == 'personalentity' ? 'class="active"' : ''; ?>><a href="index.php?page=personalentity" ><i class="icon-price-tag"></i> <span>My Products</span></a></li>
+				<!--<li><a href="index.php?page=reentry" ><i class="fa fa-pencil-square-o"></i>Add Entry</a></li>-->
+				<li <?php echo $currentpage == 'gc' ? 'class="active"' : ''; ?>><a href="index.php?page=gc" ><i class="icon-shopping-basket"></i> <span>Purchase Products</span></a></li>					
+				<li <?php echo $currentpage == 'btcwallet' ? 'class="active"' : ''; ?>><a href="index.php?page=btcwallet" ><i class="icon-share-alternitive"></i> <span>Deposit</span></a></li>	
+				<li <?php echo $currentpage == 'transaction' ? 'class="active"' : ''; ?>><a href="index.php?page=transaction" ><i class="icon-shield"></i> <span>Verify My Deposit</span></a></li>	
+				<li <?php echo $currentpage == 'withdrawal' ? 'class="active"' : ''; ?>><a href="index.php?page=withdrawal" ><i class="icon-dollar"></i> <span>Withdrawal</span></a></li>
+				<li><a href="index.php?page=signout" ><i class="icon-log-out"></i> <span>Logout</span></a></li>
 
-                        			<?php
-                        		}
-                        	?>
+			<?php
+				} else {
+			?>
 
-                        </ul>
-                    </li>	
+				<li><a href="index.php?page=signin" ><i class="fa fa-sign-in"></i>Login</a></li>
+				<li><a href="index.php?page=register" ><i class="fa fa-user"></i>Register</a></li>
 
-					<li>
-						<a href="#" ><i class="fa fa-user"></i>My Account</a>
-						<ul>
-							<li>
-								<a href="index.php?page=editprofile" ><i class="fa fa-pencil-square-o"></i>Edit Profile</a>
-							</li>   
-							<li>
-								<a href="index.php?page=changepass" ><i class="fa fa-pencil-square-o"></i>Change Password</a>
-							</li>
-							<li>
-								<a href="index.php?page=withdrawhistory" ><i class="fa fa-pencil-square-o"></i>Withdrawal History</a>
-							</li>
-							<li>
-								<a href="index.php?page=timeline" ><i class="fa fa-trophy"></i>My Timeline</a>
-							</li>  
-							<li>
-								<a href="index.php?page=security" ><i class="fa fa-lock"></i>Security</a>
-							</li>  
-							<li>
-								<a href="index.php?page=rebate" ><i class="fa fa-columns"></i>Referrals</a>
-							</li>  
-							<li>
-								<a href="index.php?page=codeactivate" ><i class="fa fa-keyboard-o"></i>Code Activate</a>
-							</li>  
+			<?php
+				}
+			?>
 
+			</ul>
+		</div>
 
+    </nav> 
 
-						</ul>
-						
-						
-					</li>					
-	
-                    <li>
-                        <a href="#" ><i class="fa fa-bank"></i>Convert</a>
-                        <ul>
-
-					<li>
-						<a href="index.php?page=convert" ><i class="fa fa-send"></i>BTC to USD</a>
-					</li>
-
-					<li>
-						<a href="index.php?page=convertpesos" ><i class="fa fa-send"></i>USD to BTC</a>
-					</li>	
-					<li>
-						<a href="index.php?page=convertwallet" ><i class="fa fa-send"></i>USD to E-wallet</a>
-					</li>	
-					<li>
-						<a href="index.php?page=fundtransfer" ><i class="fa fa-send"></i>Fund Transfer</a>
-					</li>	
-
-
-
-                        </ul>
-                    </li>
-
-
-					<li>
-						<a href="index.php?page=personalentity" ><i class="fa fa-database"></i>My Products</a>
-					</li>
-<!-- 					<li>
-						<a href="index.php?page=reentry" ><i class="fa fa-pencil-square-o"></i>Add Entry</a>
-					</li>   
-				 -->
-					<li>
-						<a href="index.php?page=gc" ><i class="fa fa-qrcode"></i>Purchase Products</a>
-					</li>					
-					<li>
-						<a href="index.php?page=btcwallet" ><i class="fa fa-send"></i>Deposit</a>
-					</li>	
-
-					<li>
-						<a href="index.php?page=transaction" ><i class="fa fa-bank"></i>Verify My Deposit</a>
-					</li>	
-
-
-					<li>
-						<a href="index.php?page=withdrawal" ><i class="fa fa-money"></i>Withdrawal</a>
-					</li>
-				
-					<li>
-						<a href="index.php?page=signout" ><i class="fa fa-sign-out"></i>Logout</a>
-					</li>
-					
-					
-						
-					<?php
-						}
-						else
-						{
-							
-					?>
-					
-					<li>
-						<a href="index.php?page=signin" ><i class="fa fa-sign-in"></i>Login</a>
-					</li>
-					<li>
-						<a href="index.php?page=register" ><i class="fa fa-user"></i>Register</a>
-					</li>		
-					<?php
-						}
-					?>
-
-					
-					
-                </ul>
-                            </div>
-
-        </nav>  
+</header>

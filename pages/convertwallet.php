@@ -62,12 +62,9 @@ $row = mysqli_fetch_array_cheat($q);
 
 
 ?>
-<h2>Convert Dollars to E-wallet</h2>
+ 
 
-<p>Please note that any transfer amount to E-wallet is cannot send back to Dollars. E-wallet is used only for repurchasing.</p>   
 
-<p>E-wallet Balance: (<?php echo "$".number_format($row['balance_wallet'],2);?>)</p>
-<p>Dollars Balance: (<?php echo "$".number_format($row['balance_pesos'],2);?>)</p>
 <?php
 if($error!='')
 {
@@ -87,28 +84,34 @@ if($success!='')
 ?>
 
 
-<form method="POST" action="">
-   <table width="100%">
-      <tbody>
-	</table>
-		 <table id='optionspayment'>
-		 </table>  
-   <table id='defaultfield' width="100%">
-      <tbody>		
+<form method="POST" action="" class="form-container dollartoewallet">
+	<div class="npage-header">
+		<h2>Convert Dollars to E-wallet</h2>
+		<p>Please note that any transfer amount to E-wallet is cannot send back to Dollars. E-wallet is used only for repurchasing.</p>  
+	</div>
 
+	<div class="amount-box user-balance">
+		<ul class="amount-box-list">
+			<li>
+				<i class="icon-dollar"></i>
+				<span><em>Dollar</em> <?php echo "$".number_format($row['balance_pesos'],2);?></span>
+			</li>
+			<li>
+				<i class="icon-wallet"></i>
+				<span><em>E-Wallet</em> <?php echo "$".number_format($row['balance_wallet'],2);?></span>
+			</li>
+		</ul>
+	</div>
 
-        <tr class='antibug'>
-            <td style="width:180px;" class="key" valign="top"><label for="accounts_name">Dollar to Convert:</label></td>
-            <td>
-               <input style="width: 302px;" value='<?php echo $row['balance_pesos']; ?>' required="" type="float" name="pesos_value" id="pesos_value" size="40" maxlength="255" value="">
-               <span class="validation-status"></span>												
-            </td>
-         </tr>   
+	<div class="col-grp">
+		<div id='optionspayment' class="col col-12"></div>
+		<div class="col col-12" id='defaultfield'>
+			<div class="antibug">
+				<input placeholder="Dollar to Convert" value='<?php echo $row['balance_pesos']; ?>' required="" type="float" name="pesos_value" id="pesos_value" size="40" maxlength="255" value="">
+               <span class="validation-status"></span>
+			</div>
+		</div>
+	</div>
 
-      
-      </tbody>
-   </table>
- 
-   <br>
-   <center><input class="btn btn-primary btn-lg" type="submit" name="submit" value="Process"></center>
+	<div class="action"><input class="nbtn nbtn-primary" type="submit" name="submit" value="Process"></div>
 </form>

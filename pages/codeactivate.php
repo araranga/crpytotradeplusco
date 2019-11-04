@@ -74,10 +74,7 @@ mysql_query_cheat("INSERT INTO tbl_bonus SET amount='{$qxxrow['rebates']}',accou
 	
 		}
 	}
-//
-?>
-<h2>Code Activation</h2>   
-<?php
+
 if($error!='')
 {
 ?>
@@ -104,7 +101,12 @@ $payment['btc'] = $fields;
 ?>
 
 
-<form method="POST" action="" autocomplete="off">
+<form method="POST" action="" autocomplete="off" class="form-container code-activation">
+	<div class="npage-header">
+		<h2>Code Activation</h2>   
+	</div>
+
+
    <table width="100%">
       <tbody>
 
@@ -121,24 +123,26 @@ $payment['btc'] = $fields;
             </td>
          </tr>
 	</table>
-		 <table id='optionspayment'>
-		 </table>  
-   <table id='defaultfield' width="100%" style='display:none;'>
-      <tbody>					 
-		 
+
+	<table id='optionspayment'></table>  
+	
+	<div id='defaultfield' style='display:none;'>
+		<input required="" type="codes" name="codes" id="codes" size="40" maxlength="255" value="" placeholder="Please enter codes">
+		<span class="validation-status"></span>
+	</div>
+		<!-- <tbody>					 
          <tr class="antibug">
             <td style="width:180px;" class="key" valign="top"><label for="accounts_name">Please enter codes:</label></td>
-            <td>
-               <input style="width: 302px;" required="" type="codes" name="codes" id="codes" size="40" maxlength="255" value="">
-               <span class="validation-status"></span>												
-            </td>
+            <td> -->
+               												
+            <!-- </td>
          </tr>
-      </tbody>
-   </table>
+      </tbody> -->
  
    <br>
-   <center><input class="btn btn-primary btn-lg" type="submit" name="submit" value="Process"></center>
+   <div class="action"><input class="nbtn nbtn-primary" type="submit" name="submit" value="Process"></center>
 </form>
+
 <script>
 	jQuery('#claimtypeid').trigger('change');
 function widraw(myval)

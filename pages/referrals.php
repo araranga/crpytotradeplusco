@@ -18,29 +18,34 @@ $q = mysql_query_cheat($query);
  $queryx = "SELECT SUM(amount) as rebs  FROM tbl_bonus WHERE bonus_type='rf' AND accounts_id='$accounts_id'";
 $qrsum = mysqli_fetch_array_cheat(mysql_query_cheat($queryx));
 ?>
-<h2>My Referrals (Total: <?php echo $qrsum['rebs']; ?>)</h2>
-<table class="table table-striped table-bordered table-hover">
-    <thead>
-        <tr>
-			<th>Summary/Event</th>
-			<th>Cost</th>
-			<th>Code</th>
-			<th>Username</th>
-        </tr>
-    </thead>
-    <tbody>
-		<?php
-			while($row=mysqli_fetch_array_cheat($q)){		
-		?>
-        <tr>
-            <td><?php echo $row['rate_name']; ?> - <?php echo $row['rate_start']; ?></td>
-			<td><?php echo $row['rate_start'] * 0.10; ?></td>
-            <td>PIN:	<?php echo $row['code_pin']; ?>
-			<br>VALUE:	<?php echo $row['code_value']; ?></td>
-			<td><?php echo $row['username']; ?></td>
-        </tr>
-		<?php
-			}
-		?>
-    </tbody>
-</table>
+
+<div class="npage-header">
+    <h2>My Referrals (Total: <?php echo $qrsum['rebs']; ?>)</h2>
+</div>
+<div class="ntable">
+	<table class="table table-striped table-bordered table-hover">
+	    <thead>
+	        <tr>
+				<th>Summary/Event</th>
+				<th>Cost</th>
+				<th>Code</th>
+				<th>Username</th>
+	        </tr>
+	    </thead>
+	    <tbody>
+			<?php
+				while($row=mysqli_fetch_array_cheat($q)){		
+			?>
+	        <tr>
+	            <td><?php echo $row['rate_name']; ?> - <?php echo $row['rate_start']; ?></td>
+				<td><?php echo $row['rate_start'] * 0.10; ?></td>
+	            <td>PIN:	<?php echo $row['code_pin']; ?>
+				<br>VALUE:	<?php echo $row['code_value']; ?></td>
+				<td><?php echo $row['username']; ?></td>
+	        </tr>
+			<?php
+				}
+			?>
+	    </tbody>
+	</table>
+</div>

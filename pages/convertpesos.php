@@ -1,3 +1,5 @@
+
+
 <?php
 require_once("./connect.php");
 $accounts_id = $_SESSION['accounts_id'];
@@ -65,80 +67,75 @@ $row = mysqli_fetch_array_cheat($q);
 //
 
 
-?>
-<h2>Convert Dollars to BTC</h2>  
+?> 
 
-
-<div class='coursebox' style='background-color:green;font-weight:700;'>
-<p>Conversion:<br> 
-	1 BTC = $<?php echo round($row2['cmsmanager_content'],2); ?> USD
-</p>
+<div class="npage-header">
+	<h2>Convert Dollars to BTC</h2>
 </div>
-<style>
-.coursebox{
-	padding: 20px;
-    background-color: #2196F3;
-    color: white;
-    margin-bottom: 15px;
-}
-</style> 
 
-<p>BTC Balance: (₿<?php echo $row['balance'];?>)</p>
-<p>Dollars Balance: (<?php echo "$".number_format($row['balance_pesos'],2);?>)</p>
-<?php
-if($error!='')
-{
-?>
-<div class="warning"><ul class="fa-ul"><li><?php echo $error;?></li></ul></div>
-<?php
-}
-?>
+<div class="col-grp">
+	<div class="col col-6">
+		<div class="coversion-rate">
+			<h6>Conversion Rate (diba dapat USD to BTC to?)</h6>
+			<p>1 BTC = $<?php echo round($row2['cmsmanager_content'],2); ?> USD</p>
+		</div>
+		<div class="amount-box">
+			<h3>Balance</h3>
+			<ul class="amount-box-list balances">
+				<li>
+					<i class="icon-bitcoin"></i>
+					<span><em>bitcoin</em> <?php echo $row['balance'];?></span>
+				</li>
+				<li>
+					<i class="icon-dollar"></i>
+					<span><em>Dollar</em> <?php echo "$".number_format($row['balance_pesos'],2);?></span>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div class="col col-6">
+		<h3>Convert</h3>
+		<?php
+			if ( $error != '' ) {
+			?>
+				<div class="warning"><ul class="fa-ul"><li><?php echo $error;?></li></ul></div>
+			<?php
+			}
+			
+			if ( $success != '' ) {
+			?>
+				<div class="noti"><ul class="fa-ul"><li><i class="fa fa-check fa-li"></i>Done requesting for withdrawal please see status <a href='?page=withdrawhistory'>here</a> </li></ul></div>
+		<?php
+			}
+		?>
+		<form method="POST" action="" class="form-container convert-currency-form">
+			<div class="col-grp">
+				<div id='optionspayment' class="col-col-12"></div>
+				<div class="col col-12">
+					<div class='antibug'>
+						<div class="field-w-icon">
+							<i class="icon-dollar"></i>
+							<input value='<?php echo $row['balance_pesos']; ?>'  onkeyup="convertBTC()" required="" type="float" name="pesos_value" id="pesos_value" size="40" maxlength="255" value="">
+						</div>
+						<span class="validation-status"></span>	
+					</div>
+				</div>
+				<div class="col col-12">
+					<div class='antibug'>
+						<div class="field-w-icon">
+							<i class="icon-bitcoin"></i>
+							<input readonly="readonly" onkeyup="convertBTC()" required="" type="float" name="btc_value" id="btc_value" size="40" maxlength="255" value="">
+						</div>
+						<span class="validation-status"></span>	
+					</div>
+				</div>
+				<div class="col col-12 action"><a href='index.php?page=convert'>Click here to convert BTC to Dollars</a><input class="nbtn nbtn-primary" type="submit" name="submit" value="Process"></div>
+			</div>		
+		</form>
+	</div>
+</div> 
 
-<?php
-if($success!='')
-{
-?>
-<div class="noti"><ul class="fa-ul"><li><i class="fa fa-check fa-li"></i>Done requesting for withdrawal please see status <a href='?page=withdrawhistory'>here</a> </li></ul></div>
-<?php
-}
-?>
 
-
-<form method="POST" action="">
-   <table width="100%">
-      <tbody>
-	</table>
-		 <table id='optionspayment'>
-		 </table>  
-   <table id='defaultfield' width="100%">
-      <tbody>		
-
-
-        <tr class='antibug'>
-            <td style="width:180px;" class="key" valign="top"><label for="accounts_name">Dollar:</label></td>
-            <td>
-               <input style="width: 302px;" value='<?php echo $row['balance_pesos']; ?>'  onkeyup="convertBTC()" required="" type="float" name="pesos_value" id="pesos_value" size="40" maxlength="255" value="">
-               <span class="validation-status"></span>												
-            </td>
-         </tr>   
-
-
-        <tr class='antibug'>
-            <td style="width:180px;" class="key" valign="top"><label for="accounts_name">BTC:</label></td>
-            <td>
-               <input style="width: 302px;" readonly="readonly" onkeyup="convertBTC()" required="" type="float" name="btc_value" id="btc_value" size="40" maxlength="255" value="">
-               <span class="validation-status"></span>												
-            </td>
-         </tr>
-      
-      </tbody>
-   </table>
- 
-   <br>
-   <center><input class="btn btn-primary btn-lg" type="submit" name="submit" value="Process"></center>
-</form>
-
-<a href='index.php?page=convert'>Click here to convert BTC to Dollars</a>
 <script>
 jQuery( document ).ready(function() {
   convertBTC();

@@ -70,133 +70,116 @@ if(isset($_POST['security_type'])){
 
 
     <!-- Content Header (Page header) -->
-    <section class="content-header">
-      <h1>
-        Security
-      </h1>
+    <section class="npage-header">
+        <h2>Security</h2>
     </section>
 
     <!-- Main content -->
-    <section class="content container-fluid">
-<?php
-  if(isset($_GET['error2fa'])){
-?>
+    <section>
 
-<div class="callout callout-danger">
-          <p>Unable to disable 2FA. Code entered is invalid.</p>
-</div>
-<?php
-  }
-?>
-<?php
-  if(count($error)!=0){
-?>
 
-<div class="callout callout-danger">
-          <p>
-            <?php
-              foreach($error as $errorval){
-                echo $errorval."<br>";
-              }
-            ?>
-          </p>
-</div>
-<?php
-  }
-?>
+    <?php
+        if ( isset( $_GET['error2fa'] ) ) {
+    ?>
 
-<?php
-  if(count($success)!=0){
-?>
-
-<div class="callout callout-success">
-          <p>
-            <?php
-              foreach($success as $successval){
-                echo $successval."<br>";
-              }
-            ?>
-          </p>
-</div>
-<?php
-  }
-?>  
-
-<form method='POST' action='index.php?page=security'>
-<div class="box">
-            <div class="box-header">
-              <h3 class="box-title">Verification login by email</h3>
+            <div class="callout callout-danger">
+                <p>Unable to disable 2FA. Code entered is invalid.</p>
             </div>
-            <div class="box-body">
-              <?php
-                if(empty($_SESSION['security_1email'])){
-                  echo "Your account is not protected by email verification! Enable an email verification now.";
-                }else{
-                  echo "Your account is protected by email verification. ";
-                }
-              ?>
-                
-            </div>
-            <div class='box-footer'>
-              <input type="hidden" name="security_type" value='1'>
-              <input type="hidden" name="security_1email" value='<?php echo $_SESSION['security_1email']; ?>'>
-              <button type="submit" value="2" class="btn btn-primary">
+    <?php
+        }
+
+        if ( count( $error ) != 0 ) {
+    ?>
+
+            <div class="callout callout-danger">
+                <p>
                 <?php
-                  if(empty($_SESSION['security_1email'])){
-                    echo "Enable";
-                  }
-                  else{
-                    echo "Disable";
-                  }
+                    foreach($error as $errorval){
+                        echo $errorval."<br>";
+                    }
                 ?>
-              </button>
+                </p>
             </div>
-            <!-- /.box-body -->
-</div>
-</form>
+    <?php
+        }
+    
+        if ( count( $success ) !=0 ) {
+    ?>
 
-
-<form method='POST' action='index.php?page=security'>
-<div class="box">
-            <div class="box-header">
-              <h3 class="box-title">Two Factor Authentication</h3>
-            </div>
-            <div class="box-body">
-              <?php
-                if(empty($_SESSION['security_2gauth'])){
-                  echo "Your account is not protected by two-step verification! Enable an authenticator now.";
-                }else{
-                  echo "Your account is protected by two-step verification. ";
-                }
-              ?>
-                
-            </div>
-            <div class='box-footer'>
-              <input type="hidden" name="security_type" value='2'>
-              <input type="hidden" name="security_2gauth" value='<?php echo $_SESSION['security_2gauth']; ?>'>
-             
+            <div class="callout callout-success">
+                <p>
                 <?php
-                  if(empty($_SESSION['security_2gauth']) && empty($_SESSION['security2_val'])){
-                    echo '<button type="submit" value="2" class="btn btn-primary">Enable</button>';
-                  }
-                  else if($_SESSION['security2_val']!='' && $_SESSION['security_2gauth']!='')
-                  {
-                    echo '<input name="qrcide" type="text" value="" placeholder="Enter 2FA Code" style="margin-right:10px;"><button type="submit" value="2" class="btn btn-primary">Disable</button>';
-                  }
+                    foreach ( $success as $successval ) {
+                        echo $successval."<br>";
+                    }
                 ?>
-              </button>
-<?php
-  if($_SESSION['security2_val']!='' && $_SESSION['security_2gauth']=='')
-  {
-?>              
-              <button id='qrcode' type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-default">Click to Verify</button>
-<?php
-}
-?>
+                </p>
             </div>
-            <!-- /.box-body -->
-</div>
-</form>
+    <?php
+        }
+    ?>  
+
+        
+
+            <ul class="security-setting-list">
+                
+                <li>
+                    <form method='POST' action='index.php?page=security'>
+                        <h5 class="box-title">Verification login by email</h5>
+                        <?php
+                            if ( empty( $_SESSION['security_1email'] ) ) {
+                                echo "<p>Your account is not protected by email verification! Enable an email verification now.</p>";
+                            } else {
+                                echo "<p>Your account is protected by email verification.</p>";
+                            }
+                        ?>
+                        <div class="action">
+                            <input type="hidden" name="security_type" value='1'>
+                            <input type="hidden" name="security_1email" value='<?php echo $_SESSION['security_1email']; ?>'>
+                            <button type="submit" value="2" class="nbtn nbtn-primary">
+                                <?php
+                                    if ( empty( $_SESSION['security_1email'] ) ) {
+                                        echo "Enable";
+                                    } else {
+                                        echo "Disable";
+                                    }
+                                ?>
+                            </button>
+                        </div>
+                    </form>
+                </li>
+
+                <li>
+                    <form method='POST' action='index.php?page=security'>
+                        <h5 class="box-title">Two Factor Authentication</h5>
+                        <?php
+                            if ( empty( $_SESSION['security_2gauth'] ) ) {
+                                echo "<p>Your account is not protected by two-step verification! Enable an authenticator now.</p>";
+                            } else {
+                                echo "<p>Your account is protected by two-step verification.</p>";
+                            }
+                        ?>
+                        <div class="action">
+                            <input type="hidden" name="security_type" value='2'>
+                            <input type="hidden" name="security_2gauth" value='<?php echo $_SESSION['security_2gauth']; ?>'>
+                            <?php
+                                if ( empty( $_SESSION['security_2gauth'] ) && empty( $_SESSION['security2_val'] ) ) {
+                                    echo '<button type="submit" value="2" class="nbtn nbtn-primary">Enable</button>';
+                                } else if ( $_SESSION['security2_val'] != '' && $_SESSION['security_2gauth'] !='' ) {
+                                    echo '<input name="qrcide" type="text" value="" placeholder="Enter 2FA Code" style="margin-right:10px;"><button type="submit" value="2" class="nbtn nbtn-primary">Disable</button>';
+                                }
+
+                                if ( $_SESSION['security2_val'] != '' && $_SESSION['security_2gauth'] == '' ) {
+                            ?>              
+                                    <button id='qrcode' type="button" class="nbtn nbtn-primary" data-toggle="modal" data-target="#modal-default">Click to Verify</button>
+                            <?php
+                                }
+                            ?>
+                        </div>
+                    </form>
+                </li>
+
+            </ul>
 
 
 
