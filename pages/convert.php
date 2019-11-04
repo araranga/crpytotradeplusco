@@ -99,7 +99,7 @@ $row = mysqli_fetch_array_cheat($q);
 			</ul>
 		</div>
 	</div>
-	<div class="col col-6">
+	<div class="col col-6 convert-form-wrap">
 		<h3>Convert</h3>
 		<?php
 			if($error!='') {
@@ -137,7 +137,7 @@ $row = mysqli_fetch_array_cheat($q);
 						<span class="validation-status"></span>												
 					</div>         
 				</div>
-				<div class="col col-12 action"><a href='index.php?page=convertpesos'>Click here to convert Dollars to BTC</a><input class="nbtn nbtn-primary" type="submit" name="submit" value="Process"></div>
+				<div class="col col-12 action"><input class="nbtn nbtn-primary" type="submit" name="submit" value="Process"><a href='index.php?page=convertpesos'>Click here to convert Dollars to BTC</a></div>
 			</div>
 		</form>
 	</div>

@@ -2,15 +2,23 @@ html, body { height: 100%; }
 
 #wrapper {
 	position: relative;
-	padding: 0 0 0 30rem;
+	padding: 0 0 0 5rem;
 	display: flex;
+@media (min-width: 1001px) {
+	padding:0 0 0 30rem;
+}
 }
 
-body.outside #wrapper { 
-	padding:0;
-	display: flex;
-	align-items:center;
-	justify-content:center;
+body.outside {
+	#wrapper { 
+		padding:0;
+		display: flex;
+		align-items:center;
+		justify-content:center;
+	}
+
+	#dashboard-body .wrap { padding:0 }
+
 }
 
 #dashboard-header {
@@ -18,8 +26,13 @@ body.outside #wrapper {
 	height:100%;
 	left:0;
 	top:0;
+	width:5rem;
+
+@media (min-width: 1001px) {
 	width:30rem;
-	overflow-x:auto
+	overflow-x:auto;
+}
+
 }
 
 #dashboard-body {
@@ -32,8 +45,14 @@ body.outside #wrapper {
 		padding:1rem;
 	}
 
-	.wrap {
-		padding:5rem;
-	}
+	.wrap { padding:1.5rem; }
+
+@media (min-width: 640px) {
+	.wrap { padding:3rem; }	
+}
+
+@media (min-width: 800px) {
+	.wrap { padding:5rem; }	
+}
 
 } 

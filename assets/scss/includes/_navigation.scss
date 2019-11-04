@@ -3,15 +3,14 @@
 #main-menu ul { list-style: none; margin:0; padding:0 }
 
 .myaccount {
-	padding:2.5rem;
+	background: $blue;
 	position: relative;
 	span {
 		cursor: pointer;
 		display: block;
 		text-align: left;
 		position: relative;
-		padding-left: 6.3rem;
-		padding-right: 3rem;
+		em { font-style:normal }
 		i {
 			font-size: 1.6rem;
 			position: absolute;
@@ -20,8 +19,8 @@
 			align-items:center;
 			justify-content:center;
 			top:0;
-			&.icon-user { width:4.8rem; left:0; border-right:.1rem solid darken($blue, 5%); @include boxshadow( .1rem 0 0 lighten($blue, 5%) ) }
-			&.icon-chevron-small-down { width:3rem; right:0; }
+			&.icon-user { width:100%; }
+			&.icon-chevron-small-down { width:1rem; right:0; }
 		}
 		&.active { @include borderradius(.5rem .5rem 0 0) }
 	}
@@ -29,10 +28,8 @@
 		z-index: 1;
 		display: none;
 		position: absolute;
-		left:2.5rem;
 		background: $blue;
-		@include borderradius(0 0 .5rem .5rem);
-		@include calc(width, '100% - 5rem');
+		@include calc(width, '100vw - 6rem');
 		border-top:.1rem solid darken($blue, 5%);
 		li {
 			border-bottom:.1rem solid lighten($blue, 5%);
@@ -52,6 +49,37 @@
 		}
 	}
 	span.active ~ ul { display: block } 
+
+@media (max-width: 1000px) {
+	span {
+		padding:0;
+		height:5rem;
+		em { display:none }
+		i.icon-chevron-small-down:before { content: "\e904"; }
+	}
+	ul { 
+		top:0;
+		left:5rem;
+	}
+}
+
+@media (min-width: 1001px) {
+	background: lighten($gray200, 3%);
+	padding:2.5rem;
+	span {
+		padding-left: 6.3rem;
+		padding-right: 3rem;
+		i {
+			&.icon-user { width:4.8rem; left:0; border-right:.1rem solid darken($blue, 5%); @include boxshadow( .1rem 0 0 lighten($blue, 5%) ) }
+			&.icon-chevron-small-down { width:3rem; }
+		}
+	}
+	ul {
+		@include calc(width, '100% - 5rem');
+		@include borderradius(0 0 .5rem .5rem);
+	}
+}
+
 }
 
 #main-menu {
@@ -67,19 +95,15 @@
 			text-decoration: none;
 			display: block;
 			color:lighten($gray400, 10%);
-			padding:1.75rem 1.5rem 1.75rem 4.8rem;
 			position: relative;
 			outline: none;
 			@include transition(all .5s ease);
 			i {
-				position: absolute;
 				width:4.8rem;
-				height:100%;
+				height:4.8rem;
 				display:flex;
 				align-items:center;
 				justify-content:center;
-				top:0;
-				left:0;
 				@include transition(all .5s ease);
 			}
 			&:hover {
@@ -91,14 +115,13 @@
 	}
 	li.has-submenu {
 		position: relative;
-		a { padding-right:3rem }
 		&>a:after {
 			content: "\e902";
 			position: absolute;
 			right:0;
 			top:0;
 			height:100%;
-			width:3rem;
+			width:1rem;
 			display: flex;
 			align-items:center;
 			justify-content:center;
@@ -112,10 +135,49 @@
 	}
 
 	
-
-	li ul { padding:1.25rem 0; border-top:.1rem solid $gray200; }
-	li li { border:0 }
+	
 	li li:last-child { border:0 }
-	li li a { font-size:1.4rem; padding:.75rem 1.5rem .75rem 4.8rem; text-decoration: none }
+	li li a { font-size:1.4rem; text-decoration: none; padding:0.75rem 1.5rem }
+
+@media (max-width: 1000px) {
+	
+	li {
+		a {
+			span { display:none }
+		}
+		&.has-submenu > a:after { content: "\e904"; }
+	}
+
+	li.active ul {
+		position:absolute;
+		left:5rem;
+		top:0;
+		background:$white;
+		@include calc(width, '100vw - 6rem');
+		z-index:1;
+		border-bottom:.1rem solid $gray200;
+		border-top:.1rem solid $gray200;
+	}
+
+	li li a { height:4.8rem; display:flex; align-items:center; }
+
+}
+
+@media (min-width: 1001px) {
+	li a {
+		padding:1.75rem 1.5rem 1.75rem 4.8rem;
+		i {
+			height:100%;
+			position: absolute;
+			top:0;
+			left:0;
+		}
+	}
+	li.has-submenu a { padding-right:3rem }
+	li.has-submenu > a:after { width:3rem } 
+	li ul { border-top:.1rem solid $gray200; padding:1.25rem 0; }
+	li li { border:0 }
+	li li a { padding:.75rem 1.5rem .75rem 4.8rem; }
+}
 
 }

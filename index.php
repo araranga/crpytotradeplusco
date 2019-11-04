@@ -48,7 +48,9 @@ ini_set("error_log", "php-error.log");
 				}
 			
 				if( !$_GET['page'] ) {
-					include("pages/home.php");
+					echo "<div class='wrap'>";
+						include("pages/home.php");
+					echo "</div>";
 				} else {
 					echo "<div class='wrap'>";
 					include("pages/".$_GET['page'].".php");

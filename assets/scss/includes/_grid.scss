@@ -1,6 +1,6 @@
 .col-grp {
 
-@media (min-width: $md) {
+@media (min-width: 1001px) {
 	
 display: flex;
 flex-wrap: wrap;
@@ -11,6 +11,8 @@ margin-right: -$lr-space;
 		padding-left: $lr-space;
 		padding-right: $lr-space;
 		position: relative;
+		align-items:flex-start;
+		margin-bottom:0;
 	}
 
 	.col-1 { width : 8.3333%; }
