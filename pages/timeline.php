@@ -53,7 +53,7 @@ if($row[''])
 	<div class="col col-6">
 		
 		<div class="amount-box total-withdrawals">
-			<h3>Total Withdrawals</h3>
+			<h3>Total Bitcoin Withdrawals</h3>
 			<ul class="amount-box-list withdrawals">
 				<li>
 					<i class="icon-bitcoin"></i>
