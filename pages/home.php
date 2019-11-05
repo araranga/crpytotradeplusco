@@ -25,12 +25,12 @@ if ( $query ) :
 	echo '<div class="announcements">';
 	while($row=mysqli_fetch_array_cheat($q)) {
 		$excerpt = $row['bannermanager_content'];
-		$excerpt = substr($excerpt, 0, 280);
+		//$excerpt = substr($excerpt, 0, 280);
 ?>
 		<div class="announcement-item">
 			<span class="ai-photo" style="background-image:url(adminpage/media/<?php echo $row['bannermanager_image_large']; ?>)"></span>
 			<h3><?php echo $row['bannermanager_title']; ?></h3>
-			<?php echo $excerpt . '...'; ?>
+			<?php echo $excerpt; ?>
 		</div>
 <?php
 	}
