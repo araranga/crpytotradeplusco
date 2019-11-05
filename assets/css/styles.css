@@ -328,12 +328,6 @@ form.form-container .col-grp {
 form.form-container .col {
   padding: 1rem 1.5rem;
 }
-form.form-container .col:first-child {
-  padding-top: 0;
-}
-form.form-container .col:last-child {
-  padding-bottom: 0;
-}
 form.form-container .action {
   text-align: right;
   margin-top: 3rem;

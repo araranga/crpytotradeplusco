@@ -87,7 +87,7 @@ if($success!='')
 <form method="POST" action="" class="form-container dollartoewallet">
 	<div class="npage-header">
 		<h2>Convert Dollars to E-wallet</h2>
-		<p>Please note that any transfer amount to E-wallet is cannot send back to Dollars. E-wallet is used only for repurchasing.</p>  
+		<p>Please note that any transfer amount to E-wallet can't be sent back to your Dollar-Wallet.</p>  
 	</div>
 
 	<div class="amount-box user-balance">

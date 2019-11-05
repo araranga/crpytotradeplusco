@@ -21,20 +21,17 @@ $q = mysql_query_cheat($query);
 	<h2>Announcements</h2>
 </div>
 <?php
-if ( $query ) :
-	echo '<div class="announcements">';
-	while($row=mysqli_fetch_array_cheat($q)) {
-		$excerpt = $row['bannermanager_content'];
-		$excerpt = substr($excerpt, 0, 280);
+	while($row=mysqli_fetch_array_cheat($q)){	
 ?>
-		<div class="announcement-item">
-			<span class="ai-photo" style="background-image:url(adminpage/media/<?php echo $row['bannermanager_image_large']; ?>)"></span>
-			<h3><?php echo $row['bannermanager_title']; ?></h3>
-			<?php echo $excerpt . '...'; ?>
-		</div>
+			<h4><?php echo $row['bannermanager_title']; ?></h4>
+				<div class='row'>
+					<div class='contentnews col-lg-12 col-md-12'>
+						<img style='float:left;padding:10px;width: 50%;' src='adminpage/media/<?php echo $row['bannermanager_image_large']; ?>'>
+						
+						<?php echo $row['bannermanager_content']; ?>
+					</div>
+				</div>
+			<hr>
 <?php
 	}
-	echo '</div>';
-endif;
 ?>
-
