@@ -76,7 +76,7 @@ $row = mysqli_fetch_array_cheat($q);
 <div class="col-grp">
 	<div class="col col-6">
 		<div class="coversion-rate">
-			<h6>Conversion Rate (diba dapat USD to BTC to?)</h6>
+			<h6>Conversion Rate</h6>
 			<p>1 BTC = $<?php echo round($row2['cmsmanager_content'],2); ?> USD</p>
 		</div>
 		<div class="amount-box">
