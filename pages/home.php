@@ -34,8 +34,4 @@ $q = mysql_query_cheat($query);
 			<hr>
 <?php
 	}
-<<<<<<< HEAD
 ?>
-=======
-?>
->>>>>>> 9e47cc9e4d47719b947b43f3b77374e7c3436377
