@@ -13,7 +13,8 @@
 			<li><a href="index.php?page=editprofile">Edit Profile</a></li>   
 			<li><a href="index.php?page=changepass">Change Password</a></li>
 			<li><a href="index.php?page=withdrawhistory">Withdrawal History</a></li>
-			<li><a href="index.php?page=timeline">My Timeline</a></li>  
+			<li><a href="index.php?page=timeline">My Timeline</a></li>
+			<li><a href="index.php?page=directs">My Team</a></li>  
 			<li><a href="index.php?page=security">Security</a></li>  
 			<li><a href="index.php?page=rebate">Referrals</a></li>  
 			<li><a href="index.php?page=codeactivate">Code Activate</a></li>  
@@ -53,10 +54,12 @@
 						<li <?php echo $currentpage == 'convert' ? 'class="active"' : ''; ?>><a href="index.php?page=convert" >BTC to USD</a></li>
 						<li <?php echo $currentpage == 'convertpesos' ? 'class="active"' : ''; ?>><a href="index.php?page=convertpesos" >USD to BTC</a></li>
 						<li <?php echo $currentpage == 'convertwallet' ? 'class="active"' : ''; ?>><a href="index.php?page=convertwallet" >USD to E-wallet</a></li>
-						<li <?php echo $currentpage == 'fundtransfer' ? 'class="active"' : ''; ?>><a href="index.php?page=fundtransfer" >Fund Transfer</a></li>
 					</ul>
 				</li>
 				<li <?php echo $currentpage == 'personalentity' ? 'class="active"' : ''; ?>><a href="index.php?page=personalentity" ><i class="icon-price-tag"></i> <span>My Products</span></a></li>
+
+				<li <?php echo $currentpage == 'fundtransfer' ? 'class="active"' : ''; ?>><a href="index.php?page=fundtransfer" ><i class="icon-dollar"></i> <span>Fund Transfer</span></a></li>
+
 				<!--<li><a href="index.php?page=reentry" ><i class="fa fa-pencil-square-o"></i>Add Entry</a></li>-->
 				<li <?php echo $currentpage == 'gc' ? 'class="active"' : ''; ?>><a href="index.php?page=gc" ><i class="icon-shopping-basket"></i> <span>Purchase Products</span></a></li>					
 				<li <?php echo $currentpage == 'btcwallet' ? 'class="active"' : ''; ?>><a href="index.php?page=btcwallet" ><i class="icon-share-alternitive"></i> <span>Deposit</span></a></li>	
