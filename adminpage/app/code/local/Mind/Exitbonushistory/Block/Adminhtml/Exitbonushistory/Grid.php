@@ -45,10 +45,10 @@ class Mind_Exitbonushistory_Block_Adminhtml_Exitbonushistory_Grid extends Mage_A
           'align'     =>'left',
           'index'     => 'package_summary',    
       ));
-      $this->addColumn('position', array(
-          'header'    => Mage::helper('exitbonushistory')->__('Position'),
+      $this->addColumn('maturity_date', array(
+          'header'    => Mage::helper('exitbonushistory')->__('Payout Date'),
           'align'     =>'left',
-          'index'     => 'position',
+          'index'     => 'maturity_date',
       ));
 	
 
