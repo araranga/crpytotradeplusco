@@ -57,6 +57,12 @@ $row2 = mysqli_fetch_array_cheat($q2);
 
 
 
+	$newdata = round($_POST[$balance_id] / $row2['cmsmanager_content'],2);
+
+	$msg = "Convert USD TO BTC: USD:{$_POST[$balance_id]} To BTC({$newdata}) --  BTC rate is: {$row2['cmsmanager_content']}";
+	saveLogs($_SESSION['accounts_id'],$msg);
+
+
 $accounts_id = $_SESSION['accounts_id'];
 $q = mysql_query_cheat("SELECT * FROM tbl_accounts WHERE accounts_id='$accounts_id'");
 $row = mysqli_fetch_array_cheat($q);		

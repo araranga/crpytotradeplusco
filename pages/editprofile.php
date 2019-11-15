@@ -31,6 +31,9 @@ $accounts_id = $_SESSION['accounts_id'];
 		$_SESSION['email'] = $_POST['email'];
 
 		unset($_POST['submit']);
+		unset($_POST['balance']);
+		unset($_POST['balance_pesos']);
+		unset($_POST['balance_wallet']);
 
 		$fields = formquery($_POST);
 

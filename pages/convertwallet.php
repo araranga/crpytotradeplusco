@@ -51,6 +51,11 @@ $row2 = mysqli_fetch_array_cheat($q2);
 
 
 
+	$msg = "Transfer USD TO E-wallet: AMT: {$_POST['pesos_value']}}";
+	saveLogs($_SESSION['accounts_id'],$msg);
+
+
+
 $accounts_id = $_SESSION['accounts_id'];
 $q = mysql_query_cheat("SELECT * FROM tbl_accounts WHERE accounts_id='$accounts_id'");
 $row = mysqli_fetch_array_cheat($q);		

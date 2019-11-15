@@ -54,6 +54,9 @@ function trans()
 
 			mysql_query_cheat("UPDATE tbl_buycode_history SET accounts_id='{$_SESSION['accounts_id']}',position=0,maturity_date='{$new_date}' WHERE id='{$qxxrow['id']}'");
 
+			$msg = "Code activated: {$_POST['codes']}";
+			saveLogs($_SESSION['accounts_id'],$msg);
+
 
 			if($row['refer']){
 			$q2 = mysql_query_cheat("SELECT * FROM tbl_accounts WHERE username='{$row['refer']}'");
@@ -61,6 +64,11 @@ function trans()
 
 
 			$refersummary = "5% From {$qxxrow['amount']} - {$row['username']}";
+
+
+			$msg = "5% --{$qxxrow['rebates']}-- Referral given to {$row2['username']} Code is: {$_POST['codes']}";
+			saveLogs($_SESSION['accounts_id'],$msg);
+
 
 
 			mysql_query_cheat("UPDATE tbl_accounts SET balance_pesos= balance_pesos + {$qxxrow['rebates']} WHERE accounts_id='{$row2['accounts_id']}'");

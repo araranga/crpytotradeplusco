@@ -51,7 +51,15 @@ function trans()
 		//$summary = nl2br($summary);
 		mysql_query_cheat("INSERT INTO tbl_withdraw_new_history SET summary='$summary',transnum='$trans',claimtype='".$_POST['claimtype']."',accounts_id='$accounts_id',new_balance='".$sum."',amount='".$_POST['withdraw']."',current_balance='".$row['balance']."'");
 		$q = mysql_query_cheat("SELECT * FROM tbl_accounts WHERE accounts_id='$accounts_id'");
-		$row = mysqli_fetch_array_cheat($q);		
+		$row = mysqli_fetch_array_cheat($q);	
+
+
+
+			saveLogs($_SESSION['accounts_id'],$_SESSION['username']."== Withdrawal amount is ".$_POST['withdraw']);
+
+
+
+
 		}
 	}
 //

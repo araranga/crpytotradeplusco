@@ -74,6 +74,14 @@ function pin()
 				$buycodeaccounts_id = $_SESSION['accounts_id'];
 			}
 
+
+
+			$msg = "Purchase a product ({$package_summary}) AMT:{$_POST['amount']}: $code_value-$code_pin";
+			saveLogs($_SESSION['accounts_id'],$msg);
+
+
+
+
 			if ( !empty( $row['refer'] ) )
 			{
 				$refersummary = "5% From {$check_row['rate_start']} - {$row['username']}";
@@ -81,6 +89,13 @@ function pin()
 				$row2 = mysqli_fetch_array_cheat($q2);
 				mysql_query_cheat("INSERT INTO tbl_bonus SET amount='$rebates',accounts_id='{$row2['accounts_id']}',bonus_type='{$row['accounts_id']}',refer_summary='$refersummary'");
 				mysql_query_cheat("UPDATE tbl_accounts SET balance_pesos= balance_pesos + $rebates WHERE accounts_id='{$row2['accounts_id']}'");
+
+
+
+			$msg = "5% --{$rebates}-- Referral bonus given to {$row2['username']} Code is: $code_value-$code_pin";
+			saveLogs($_SESSION['accounts_id'],$msg);
+
+
 			}
 
 			mysql_query_cheat("INSERT INTO tbl_buycode_history SET package_id='$package_id',package_summary='$package_summary',accounts_id='$buycodeaccounts_id',position='$position',code_pin='$code_pin',code_value='$code_value',rebates='$rebates',maturity_date='$new_date',amount='{$check_row['rate_start']}',maturity_amount='$maturity_amount'");

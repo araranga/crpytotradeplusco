@@ -62,6 +62,13 @@ $row2 = mysqli_fetch_array_cheat($q2);
 		mysql_query_cheat("UPDATE tbl_accounts SET $balance_id_variable='".$sum."',balance_pesos='$new' WHERE accounts_id='$accounts_id'"	);
 
 
+	$newdata = round($_POST[$balance_id] * $row2['cmsmanager_content'],2);
+
+	$msg = "Convert BTC TO USD: BTC:{$_POST[$balance_id]} To Dollars({$newdata}) -- BTC Rate is: {$row2['cmsmanager_content']}";
+	saveLogs($_SESSION['accounts_id'],$msg);
+
+
+
 
 $accounts_id = $_SESSION['accounts_id'];
 $q = mysql_query_cheat("SELECT * FROM tbl_accounts WHERE accounts_id='$accounts_id'");
