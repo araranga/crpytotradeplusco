@@ -56,66 +56,54 @@ $monthly = "amount,maturity_date,maturity_amount";
     <table>
         <thead>
             <tr>
-    			<th>My Product Database</th>
-               <th>Other Status</th>
+                <th>My Product Database</th>
+                <th>Amount</th>
+                <th>Cycle 1</th>
+                <th>Cycle 2</th>
+                <th>Cycle 3</th>
+                <th>Cycle 4</th>
             </tr>
         </thead>
         <tbody>
-		<?php
-			while ( $row=mysqli_fetch_array_cheat($q) ) {		
+        <?php
+            while ( $row=mysqli_fetch_array_cheat($q) ) {       
 
                 #var_dump($row);
-				//var_dump(dateDiff($row['history']));
-		?>
+                //var_dump(dateDiff($row['history']));
+        ?>
             <tr>
                 <td><?php echo $row['package_summary']; ?></td>
+                <td>&#8369;<?php echo number_format($row['amount'],2); ?></td>
+                <?php
+                for ($x = 1; $x <= 4; $x++) {
+                ?>
                 <td>
                     <?php
-                        if ( $row['package_id'] == 6 ) {
-                            $textdata = $monthly;
-                        } else {
-                            $textdata = $monthly;
-                        }
+                        if ( empty( $row['c'.$x.'status'] ) ) {
 
-                        $row['maturity_amount'] = "$".number_format($row['maturity_amount'],2);
-                        $row['amount'] = "$".number_format($row['amount'],2);
-
-                        foreach ( explode( ",",$textdata ) as $text ) {
-
-                            if ( empty( $row[$text] ) ) {
-                                $row[$text] = "N/A";
-                            }
-
-                            $label = $text;
-
-                            if ( $text=='maturity_date' ) {
-                                $label = "Date to receive bonus";
-                            }
-
-                            if ( $text=='maturity_amount' ) {
-                                $label = "Bonus Amount";
-                            }
-
-                            echo str_replace("_"," ",ucwords($label))." :{$row[$text]}<br>";
-                        }
-
-                        $date = date("M j, Y H:i:s",strtotime($row['maturity_date']));
-
-                        if ( empty( $row['status'] ) ) {
                             $startDate = date('Y-m-d');
-                            if ( $row['maturity_date'] == $startDate ) {
+                            if ( $row['c'.$x] == $startDate ) {
                                 echo "Status: Please wait for the system to compute your payout.";
+                            }else{
+                                echo "Bonus Date: ".$row['c'.$x];
                             }
                         } else {
-                            echo "Status: Completed";
+                            echo "Amount : &#8369;".number_format($row['c'.$x.'amount'],2);
+                            echo "<br>Status: Completed";
                         }
 
                     ?>
                 </td>
+                <?php
+                }
+                ?>
+
+
+
             </tr>
-		<?php
-			}
-		?>
+        <?php
+            }
+        ?>
         </tbody>
     </table>
 </div>

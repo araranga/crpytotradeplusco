@@ -65,6 +65,14 @@ function pin()
 			$startDate = date('Y-m-d');
 			$wDays = $check_row_main['days'];
 			$new_date = date('Y-m-d', strtotime("{$startDate} +{$wDays} weekdays"));
+
+
+			$c1 = date('Y-m-d', strtotime("{$startDate} + 60 weekdays"));
+			$c2 = date('Y-m-d', strtotime("{$startDate} + 120 weekdays"));
+			$c3 = date('Y-m-d', strtotime("{$startDate} + 180 weekdays"));
+			$c4 = date('Y-m-d', strtotime("{$startDate} + 240 weekdays"));
+
+
 			$maturity_amount = (($check_row_main['maturity'] / 100) * $check_row['rate_start']) + $check_row['rate_start'];
 			$buycodeaccounts_id = 0;
 			$position = $_SESSION['accounts_id'];
@@ -98,7 +106,7 @@ function pin()
 
 			}
 
-			mysql_query_cheat("INSERT INTO tbl_buycode_history SET package_id='$package_id',package_summary='$package_summary',accounts_id='$buycodeaccounts_id',position='$position',code_pin='$code_pin',code_value='$code_value',rebates='$rebates',maturity_date='$new_date',amount='{$check_row['rate_start']}',maturity_amount='$maturity_amount'");
+			mysql_query_cheat("INSERT INTO tbl_buycode_history SET package_id='$package_id',package_summary='$package_summary',accounts_id='$buycodeaccounts_id',position='$position',code_pin='$code_pin',code_value='$code_value',rebates='$rebates',maturity_date='$new_date',amount='{$check_row['rate_start']}',maturity_amount='$maturity_amount',c1='$c1',c2='$c2',c3='$c3',c4='$c4'");
 
 			$q = mysql_query_cheat("SELECT * FROM tbl_accounts WHERE accounts_id='$accounts_id'");
 			$row = mysqli_fetch_array_cheat($q);	
