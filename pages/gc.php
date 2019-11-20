@@ -155,7 +155,9 @@ function pin()
 				<p>
 					<span class="minimum"><i>Minimum</i> <strong>$<?php echo number_format($row_packagex['rate_start'],2); ?></strong></span>
 					<span class="maximum"><i>Maximum</i> <strong>$<?php echo number_format($row_packagex['rate_end'],2); ?></strong></span>
-					<span class="bonus-rate"><i>Bonus Rate <?php echo $row_packagex['maturity']; ?>% after</i> <strong><?php echo $row_packagex['days']; ?> Business Days</strong></span>
+<!-- 					<span class="bonus-rate"><i>Bonus Rate <?php echo $row_packagex['maturity']; ?>% after</i> <strong><?php echo $row_packagex['days']; ?> Business Days</strong></span> -->
+
+<span class="bonus-rate"><i>Bonus Rate 30% up to 90% per cycle (up to 4 cycles)</i></span>gr
 				</p>
 			</div>
 		</div>
