@@ -73,7 +73,7 @@ $monthly = "amount,maturity_date,maturity_amount";
         ?>
             <tr>
                 <td><?php echo $row['package_summary']; ?></td>
-                <td>&#8369;<?php echo number_format($row['amount'],2); ?></td>
+                <td>$<?php echo number_format($row['amount'],2); ?></td>
                 <?php
                 for ($x = 1; $x <= 4; $x++) {
                 ?>
@@ -88,7 +88,7 @@ $monthly = "amount,maturity_date,maturity_amount";
                                 echo "Bonus Date: ".$row['c'.$x];
                             }
                         } else {
-                            echo "Amount : &#8369;".number_format($row['c'.$x.'amount'],2);
+                            echo "Amount : $".number_format($row['c'.$x.'amount'],2);
                             echo "<br>Status: Completed";
                         }
 
