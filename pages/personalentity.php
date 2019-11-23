@@ -72,7 +72,7 @@ $monthly = "amount,maturity_date,maturity_amount";
                 //var_dump(dateDiff($row['history']));
         ?>
             <tr>
-                <td><?php echo $row['package_summary']; ?></td>
+                <td><?php echo $row['package_summary']; ?> <br>Date:<?php echo $row['history']; ?></td>
                 <td>$<?php echo number_format($row['amount'],2); ?></td>
                 <?php
                 for ($x = 1; $x <= 4; $x++) {
